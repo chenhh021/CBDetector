@@ -1,0 +1,32 @@
+diff --git a/java/testing/org/apache/derbyTesting/functionTests/tests/upgradeTests/PhaseChanger.java b/java/testing/org/apache/derbyTesting/functionTests/tests/upgradeTests/PhaseChanger.java
+index 93781b9..a642ebe 100644
+--- a/java/testing/org/apache/derbyTesting/functionTests/tests/upgradeTests/PhaseChanger.java
++++ b/java/testing/org/apache/derbyTesting/functionTests/tests/upgradeTests/PhaseChanger.java
+@@ -45,13 +45,17 @@
+     private ClassLoader loader;
+     private ClassLoader previousLoader;
+     private boolean trace = false;
++    private String upgradeAttributes="upgrade=true";
+     
+     public PhaseChanger(Test test, int phase,
+-            ClassLoader loader, int[] version) {
++            ClassLoader loader, int[] version, boolean useCreateOnUpgrade) {
+         super(test);
+         this.phase = phase;
+         this.loader = loader;
+         this.version = version;
++        if (useCreateOnUpgrade) {
++            upgradeAttributes += ";create=true";
++        }
+     }
+     
+     /**
+@@ -99,7 +103,7 @@
+             
+         case UpgradeChange.PH_HARD_UPGRADE:
+             JDBCDataSource.setBeanProperty(ds, "connectionAttributes",
+-                    "upgrade=true");
++                    upgradeAttributes);
+             break;
+         default:
+             break;
