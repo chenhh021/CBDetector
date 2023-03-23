@@ -1,0 +1,34 @@
+diff --git a/lucene/queryparser/src/java/org/apache/lucene/queryparser/flexible/standard/builders/TermRangeQueryNodeBuilder.java b/lucene/queryparser/src/java/org/apache/lucene/queryparser/flexible/standard/builders/TermRangeQueryNodeBuilder.java
+index 929a952..05766f5 100644
+--- a/lucene/queryparser/src/java/org/apache/lucene/queryparser/flexible/standard/builders/TermRangeQueryNodeBuilder.java
++++ b/lucene/queryparser/src/java/org/apache/lucene/queryparser/flexible/standard/builders/TermRangeQueryNodeBuilder.java
+@@ -50,20 +50,18 @@
+       upperText = null;
+     }
+ 
+-    TermRangeQuery rangeQuery =
+-        TermRangeQuery.newStringRange(
+-            field,
+-            lowerText,
+-            upperText,
+-            rangeNode.isLowerInclusive(),
+-            rangeNode.isUpperInclusive());
+-
+     MultiTermQuery.RewriteMethod method =
+         (MultiTermQuery.RewriteMethod) queryNode.getTag(MultiTermRewriteMethodProcessor.TAG_ID);
+-    if (method != null) {
+-      rangeQuery.setRewriteMethod(method);
++    if (method == null) {
++      method = MultiTermQuery.CONSTANT_SCORE_REWRITE;
+     }
+ 
+-    return rangeQuery;
++    return TermRangeQuery.newStringRange(
++        field,
++        lowerText,
++        upperText,
++        rangeNode.isLowerInclusive(),
++        rangeNode.isUpperInclusive(),
++        method);
+   }
+ }

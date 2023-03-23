@@ -1,0 +1,34 @@
+diff --git a/lucene/suggest/src/java/org/apache/lucene/search/suggest/fst/WFSTCompletionLookup.java b/lucene/suggest/src/java/org/apache/lucene/search/suggest/fst/WFSTCompletionLookup.java
+index a9c3924..0e7999b 100644
+--- a/lucene/suggest/src/java/org/apache/lucene/search/suggest/fst/WFSTCompletionLookup.java
++++ b/lucene/suggest/src/java/org/apache/lucene/search/suggest/fst/WFSTCompletionLookup.java
+@@ -68,7 +68,7 @@
+   private final boolean exactFirst;
+ 
+   /** Number of entries the lookup was built with */
+-  private long count = 0;
++  private volatile long count = 0;
+ 
+   private final Directory tempDir;
+   private final String tempFileNamePrefix;
+@@ -102,7 +102,7 @@
+     if (iterator.hasContexts()) {
+       throw new IllegalArgumentException("this suggester doesn't support contexts");
+     }
+-    count = 0;
++    long newCount = 0;
+     BytesRef scratch = new BytesRef();
+     InputIterator iter = new WFSTInputIterator(tempDir, tempFileNamePrefix, iterator);
+     IntsRefBuilder scratchInts = new IntsRefBuilder();
+@@ -121,9 +121,10 @@
+       Util.toIntsRef(scratch, scratchInts);
+       fstCompiler.add(scratchInts.get(), cost);
+       previous.copyBytes(scratch);
+-      count++;
++      newCount++;
+     }
+     fst = fstCompiler.compile();
++    count = newCount;
+   }
+ 
+   @Override

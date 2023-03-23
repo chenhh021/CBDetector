@@ -1,0 +1,13 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/index/FilterSortedSetDocValues.java b/lucene/core/src/java/org/apache/lucene/index/FilterSortedSetDocValues.java
+index cf970d6..92c5d34 100644
+--- a/lucene/core/src/java/org/apache/lucene/index/FilterSortedSetDocValues.java
++++ b/lucene/core/src/java/org/apache/lucene/index/FilterSortedSetDocValues.java
+@@ -44,7 +44,7 @@
+   }
+ 
+   @Override
+-  public long docValueCount() {
++  public int docValueCount() {
+     return in.docValueCount();
+   }
+ 

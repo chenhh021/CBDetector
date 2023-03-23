@@ -1,0 +1,17 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/index/SortingCodecReader.java b/lucene/core/src/java/org/apache/lucene/index/SortingCodecReader.java
+index 0c0f6c8..f877ce5 100644
+--- a/lucene/core/src/java/org/apache/lucene/index/SortingCodecReader.java
++++ b/lucene/core/src/java/org/apache/lucene/index/SortingCodecReader.java
+@@ -483,7 +483,11 @@
+                 field.name,
+                 () ->
+                     new SortedSetDocValuesWriter.DocOrds(
+-                        maxDoc(), docMap, oldDocValues, PackedInts.FAST)));
++                        maxDoc(),
++                        docMap,
++                        oldDocValues,
++                        PackedInts.FAST,
++                        SortedSetDocValuesWriter.DocOrds.START_BITS_PER_VALUE)));
+       }
+ 
+       @Override

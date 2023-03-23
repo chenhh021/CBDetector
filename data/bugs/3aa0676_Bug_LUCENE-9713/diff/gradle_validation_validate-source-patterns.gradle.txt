@@ -1,0 +1,42 @@
+diff --git a/gradle/validation/validate-source-patterns.gradle b/gradle/validation/validate-source-patterns.gradle
+index 389ca74..224853e 100644
+--- a/gradle/validation/validate-source-patterns.gradle
++++ b/gradle/validation/validate-source-patterns.gradle
+@@ -55,6 +55,7 @@
+     'py',
+     'sh',
+     'template',
++    'txt',
+     'vm',
+     'xml',
+     'xsl',
+@@ -78,6 +79,9 @@
+ 
+       // default excludes.
+       exclude 'build/**'
++
++      // ignore txt files in source resources and tests.
++      exclude 'src/**/*.txt'
+     }
+   }
+ 
+@@ -88,6 +92,8 @@
+ configure(project(':lucene:benchmark')) {
+   project.tasks.withType(ValidateSourcePatternsTask) {
+     sourceFiles.exclude 'data/**'
++    // Known .txt offenders.
++    sourceFiles.exclude '**/reuters.first20.lines.txt', '**/trecQRels.txt'
+   }
+ }
+ 
+@@ -101,10 +107,6 @@
+         include "**/*.${it}"
+       }
+ 
+-      // We do not scan for *.txt by default (broken files in subprojects),
+-      // but in root we can do this).
+-      include '**/*.txt'
+-
+       // Don't go into child projects (scanned separately).
+       childProjects.keySet().each{
+         exclude "${it}/**"

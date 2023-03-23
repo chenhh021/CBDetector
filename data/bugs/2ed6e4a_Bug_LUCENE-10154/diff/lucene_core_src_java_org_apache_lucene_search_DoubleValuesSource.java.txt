@@ -1,0 +1,24 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/search/DoubleValuesSource.java b/lucene/core/src/java/org/apache/lucene/search/DoubleValuesSource.java
+index a665ecc..d59bc9b 100644
+--- a/lucene/core/src/java/org/apache/lucene/search/DoubleValuesSource.java
++++ b/lucene/core/src/java/org/apache/lucene/search/DoubleValuesSource.java
+@@ -25,6 +25,7 @@
+ import org.apache.lucene.index.IndexReader;
+ import org.apache.lucene.index.LeafReaderContext;
+ import org.apache.lucene.index.NumericDocValues;
++import org.apache.lucene.index.PointValues;
+ import org.apache.lucene.search.comparators.DoubleComparator;
+ 
+ /**
+@@ -493,6 +494,11 @@
+             }
+ 
+             @Override
++            protected PointValues getPointValues(LeafReaderContext context, String field) {
++              return null;
++            }
++
++            @Override
+             public void setScorer(Scorable scorer) throws IOException {
+               holder.values = producer.getValues(ctx, fromScorer(scorer));
+               super.setScorer(scorer);

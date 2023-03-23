@@ -1,0 +1,14 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index 47a3b1c..3d1093a 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -258,6 +258,9 @@
+ * LUCENE-10019: Align file starts in CFS files to have proper alignment (8 bytes)
+   (Uwe Schinder)
+ 
++* LUCENE-9662: Make CheckIndex concurrent by parallelizing index check across segments.
++  (Zach Chen, Mike McCandless, Dawid Weiss, Robert Muir)
++
+ Bug fixes
+ 
+ * LUCENE-9686: Fix read past EOF handling in DirectIODirectory. (Zach Chen,

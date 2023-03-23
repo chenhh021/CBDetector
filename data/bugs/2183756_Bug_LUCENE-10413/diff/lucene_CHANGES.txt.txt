@@ -1,0 +1,13 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index 6f380a4..7390996 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -267,6 +267,8 @@
+   and discover classes to check from module system. The test now checks all analyzer modules,
+   so it may discover new bugs outside of analysis:common module.  (Uwe Schindler, Robert Muir)
+ 
++* LUCENE-10413: Make Ukrainian default stop words list available as a public getter. (Alan Woodward)
++
+ ======================= Lucene 9.0.0 =======================
+ 
+ New Features

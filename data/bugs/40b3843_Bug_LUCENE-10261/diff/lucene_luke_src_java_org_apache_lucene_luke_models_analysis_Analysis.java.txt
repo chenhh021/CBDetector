@@ -1,0 +1,14 @@
+diff --git a/lucene/luke/src/java/org/apache/lucene/luke/models/analysis/Analysis.java b/lucene/luke/src/java/org/apache/lucene/luke/models/analysis/Analysis.java
+index 676e217..e442224 100644
+--- a/lucene/luke/src/java/org/apache/lucene/luke/models/analysis/Analysis.java
++++ b/lucene/luke/src/java/org/apache/lucene/luke/models/analysis/Analysis.java
+@@ -133,9 +133,6 @@
+     }
+   }
+ 
+-  /** Returns built-in {@link Analyzer}s. */
+-  Collection<Class<? extends Analyzer>> getPresetAnalyzerTypes();
+-
+   /** Returns available char filter names. */
+   Collection<String> getAvailableCharFilters();
+ 

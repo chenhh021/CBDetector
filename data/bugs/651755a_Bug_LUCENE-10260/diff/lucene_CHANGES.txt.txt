@@ -1,0 +1,14 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index 27739b4..72dfba0 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -239,6 +239,9 @@
+   unwrap wrappers/delegators that are added by Lucene's testing framework. This will allow
+   testing new MMapDirectory implementation based on JDK Project Panama. (Uwe Schindler)
+ 
++* LUCENE-10260: LucenePackage class has been removed. The implementation string can be
++  retrieved from Version.getPackageImplementationVersion(). (Uwe Schindler, Dawid Weiss)
++
+ Improvements
+ ---------------------
+ 

@@ -1,0 +1,36 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/search/MultiTermQuery.java b/lucene/core/src/java/org/apache/lucene/search/MultiTermQuery.java
+index e5bc87c..8a00a1e 100644
+--- a/lucene/core/src/java/org/apache/lucene/search/MultiTermQuery.java
++++ b/lucene/core/src/java/org/apache/lucene/search/MultiTermQuery.java
+@@ -52,7 +52,7 @@
+  */
+ public abstract class MultiTermQuery extends Query {
+   protected final String field;
+-  protected RewriteMethod rewriteMethod; // TODO make this final
++  protected final RewriteMethod rewriteMethod;
+ 
+   /** Abstract class that defines how the query is rewritten. */
+   public abstract static class RewriteMethod {
+@@ -283,21 +283,11 @@
+     return rewriteMethod.rewrite(reader, this);
+   }
+ 
++  /** @return the rewrite method used to build the final query */
+   public RewriteMethod getRewriteMethod() {
+     return rewriteMethod;
+   }
+ 
+-  /**
+-   * Sets the rewrite method to be used when executing the query. You can use one of the four core
+-   * methods, or implement your own subclass of {@link RewriteMethod}.
+-   *
+-   * @deprecated set this using a constructor instead
+-   */
+-  @Deprecated
+-  public void setRewriteMethod(RewriteMethod method) {
+-    rewriteMethod = method;
+-  }
+-
+   @Override
+   public int hashCode() {
+     final int prime = 31;

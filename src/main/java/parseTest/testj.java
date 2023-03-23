@@ -1,8 +1,10 @@
+package parseTest;
+
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.Scanner;
 
-import static java.lang.System.*;
+import static java.lang.System.out;
 
 public class testj {
     public static void main(String[] args) throws IOException {

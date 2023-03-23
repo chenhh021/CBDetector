@@ -1,0 +1,13 @@
+diff --git a/lucene/join/src/java/org/apache/lucene/search/join/TermsQuery.java b/lucene/join/src/java/org/apache/lucene/search/join/TermsQuery.java
+index 67d6336..29f02e5 100644
+--- a/lucene/join/src/java/org/apache/lucene/search/join/TermsQuery.java
++++ b/lucene/join/src/java/org/apache/lucene/search/join/TermsQuery.java
+@@ -63,7 +63,7 @@
+       String fromField,
+       Query fromQuery,
+       Object indexReaderContextId) {
+-    super(toField);
++    super(toField, CONSTANT_SCORE_REWRITE);
+     this.terms = terms;
+     ords = terms.sort();
+     this.fromField = fromField;

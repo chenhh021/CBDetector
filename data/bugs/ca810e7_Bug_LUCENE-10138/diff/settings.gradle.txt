@@ -1,0 +1,18 @@
+diff --git a/settings.gradle b/settings.gradle
+index bec1d7f..90d8957 100644
+--- a/settings.gradle
++++ b/settings.gradle
+@@ -15,6 +15,13 @@
+  * limitations under the License.
+  */
+ 
++pluginManagement {
++    repositories {
++        mavenCentral()
++        gradlePluginPortal()
++    }
++}
++
+ rootProject.name = "lucene-root"
+ 
+ includeBuild("dev-tools/missing-doclet")

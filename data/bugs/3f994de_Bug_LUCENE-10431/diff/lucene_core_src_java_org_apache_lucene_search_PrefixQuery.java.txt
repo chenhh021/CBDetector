@@ -1,0 +1,20 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/search/PrefixQuery.java b/lucene/core/src/java/org/apache/lucene/search/PrefixQuery.java
+index 0ee553f..dbad6ef 100644
+--- a/lucene/core/src/java/org/apache/lucene/search/PrefixQuery.java
++++ b/lucene/core/src/java/org/apache/lucene/search/PrefixQuery.java
+@@ -30,7 +30,14 @@
+ 
+   /** Constructs a query for terms starting with <code>prefix</code>. */
+   public PrefixQuery(Term prefix) {
+-    super(prefix, toAutomaton(prefix.bytes()), true);
++    this(prefix, CONSTANT_SCORE_REWRITE);
++  }
++
++  /**
++   * Constructs a query for terms starting with <code>prefix</code> using a defined RewriteMethod
++   */
++  public PrefixQuery(Term prefix, RewriteMethod rewriteMethod) {
++    super(prefix, toAutomaton(prefix.bytes()), true, rewriteMethod);
+   }
+ 
+   /** Build an automaton accepting all terms with the specified prefix. */

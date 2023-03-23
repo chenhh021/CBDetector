@@ -1,0 +1,20 @@
+diff --git a/lucene/luke/src/test/org/apache/lucene/luke/models/analysis/TestAnalysisImpl.java b/lucene/luke/src/test/org/apache/lucene/luke/models/analysis/TestAnalysisImpl.java
+index 5462148..3bd789d 100644
+--- a/lucene/luke/src/test/org/apache/lucene/luke/models/analysis/TestAnalysisImpl.java
++++ b/lucene/luke/src/test/org/apache/lucene/luke/models/analysis/TestAnalysisImpl.java
+@@ -125,11 +125,11 @@
+     assertNotNull(tokens);
+   }
+ 
+-  @Test(expected = LukeException.class)
+-  public void testAnalyze_not_set() {
++  public void testAnalyze_default() {
+     AnalysisImpl analysis = new AnalysisImpl();
+-    String text = "This test must fail.";
+-    analysis.analyze(text);
++    String text = "Apache Lucene";
++    List<Analysis.Token> tokens = analysis.analyze(text);
++    assertNotNull(tokens);
+   }
+ 
+   @Test(expected = LukeException.class)

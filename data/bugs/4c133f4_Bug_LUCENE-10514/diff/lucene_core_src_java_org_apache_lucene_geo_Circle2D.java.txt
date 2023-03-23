@@ -1,0 +1,14 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/geo/Circle2D.java b/lucene/core/src/java/org/apache/lucene/geo/Circle2D.java
+index cfead99..7029ba3 100644
+--- a/lucene/core/src/java/org/apache/lucene/geo/Circle2D.java
++++ b/lucene/core/src/java/org/apache/lucene/geo/Circle2D.java
+@@ -159,6 +159,9 @@
+     if (calculator.disjoint(minX, maxX, minY, maxY)) {
+       return WithinRelation.DISJOINT;
+     }
++    if (contains(aX, aY) || contains(bX, bY)) {
++      return WithinRelation.NOTWITHIN;
++    }
+     if (ab == true && calculator.intersectsLine(aX, aY, bX, bY)) {
+       return WithinRelation.NOTWITHIN;
+     }

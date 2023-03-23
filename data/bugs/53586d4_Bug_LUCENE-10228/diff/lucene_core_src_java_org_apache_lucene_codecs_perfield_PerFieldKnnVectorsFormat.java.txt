@@ -1,0 +1,35 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/codecs/perfield/PerFieldKnnVectorsFormat.java b/lucene/core/src/java/org/apache/lucene/codecs/perfield/PerFieldKnnVectorsFormat.java
+index 0e5cb00..1ec03da 100644
+--- a/lucene/core/src/java/org/apache/lucene/codecs/perfield/PerFieldKnnVectorsFormat.java
++++ b/lucene/core/src/java/org/apache/lucene/codecs/perfield/PerFieldKnnVectorsFormat.java
+@@ -123,25 +123,17 @@
+       final String formatName = format.getName();
+ 
+       field.putAttribute(PER_FIELD_FORMAT_KEY, formatName);
+-      Integer suffix = null;
++      Integer suffix;
+ 
+       WriterAndSuffix writerAndSuffix = formats.get(format);
+       if (writerAndSuffix == null) {
+         // First time we are seeing this format; create a new instance
+ 
+-        String suffixAtt = field.getAttribute(PER_FIELD_SUFFIX_KEY);
+-        if (suffixAtt != null) {
+-          suffix = Integer.valueOf(suffixAtt);
+-        }
+-
++        suffix = suffixes.get(formatName);
+         if (suffix == null) {
+-          // bump the suffix
+-          suffix = suffixes.get(formatName);
+-          if (suffix == null) {
+-            suffix = 0;
+-          } else {
+-            suffix = suffix + 1;
+-          }
++          suffix = 0;
++        } else {
++          suffix = suffix + 1;
+         }
+         suffixes.put(formatName, suffix);
+ 

@@ -1,8 +1,0 @@
-diff --git a/java/testing/org/apache/derbyTesting/functionTests/master/col_rec1.out b/java/testing/org/apache/derbyTesting/functionTests/master/col_rec1.out
-new file mode 100644
-index 0000000..0356946
---- /dev/null
-+++ b/java/testing/org/apache/derbyTesting/functionTests/master/col_rec1.out
-@@ -0,0 +1,2 @@
-+Beginning test: test1
-+Ending test: test1

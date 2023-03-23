@@ -1,0 +1,13 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/codecs/DocValuesConsumer.java b/lucene/core/src/java/org/apache/lucene/codecs/DocValuesConsumer.java
+index 407cba0..5e24cf4 100644
+--- a/lucene/core/src/java/org/apache/lucene/codecs/DocValuesConsumer.java
++++ b/lucene/core/src/java/org/apache/lucene/codecs/DocValuesConsumer.java
+@@ -948,7 +948,7 @@
+               }
+ 
+               @Override
+-              public long docValueCount() {
++              public int docValueCount() {
+                 return currentSub.values.docValueCount();
+               }
+ 

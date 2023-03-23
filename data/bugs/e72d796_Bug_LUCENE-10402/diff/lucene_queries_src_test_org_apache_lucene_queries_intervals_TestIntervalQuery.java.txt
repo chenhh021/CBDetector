@@ -1,0 +1,32 @@
+diff --git a/lucene/queries/src/test/org/apache/lucene/queries/intervals/TestIntervalQuery.java b/lucene/queries/src/test/org/apache/lucene/queries/intervals/TestIntervalQuery.java
+index ddd2988..190b4a1 100644
+--- a/lucene/queries/src/test/org/apache/lucene/queries/intervals/TestIntervalQuery.java
++++ b/lucene/queries/src/test/org/apache/lucene/queries/intervals/TestIntervalQuery.java
+@@ -31,6 +31,7 @@
+ import org.apache.lucene.tests.index.RandomIndexWriter;
+ import org.apache.lucene.tests.search.CheckHits;
+ import org.apache.lucene.tests.util.LuceneTestCase;
++import org.apache.lucene.util.BytesRef;
+ 
+ public class TestIntervalQuery extends LuceneTestCase {
+ 
+@@ -77,7 +78,8 @@
+     "coordinate genome research",
+     "greater new york",
+     "x x x x x intend x x x message x x x message x x x addressed x x",
+-    "issue with intervals queries from search engine. So it's a big issue for us as we need to do ordered searches. Thank you to help us concerning that issue"
++    "issue with intervals queries from search engine. So it's a big issue for us as we need to do ordered searches. Thank you to help us concerning that issue",
++    "場外好朋友"
+   };
+ 
+   private void checkHits(Query query, int[] results) throws IOException {
+@@ -416,4 +418,9 @@
+             field, Intervals.containing(Intervals.term("w1"), new OneTimeIntervalSource()));
+     checkHits(q, new int[] {0, 1, 2, 3});
+   }
++
++  public void testUnicodePrefix() throws IOException {
++    Query q = new IntervalQuery(field, Intervals.prefix(new BytesRef("場")));
++    checkHits(q, new int[] {11});
++  }
+ }

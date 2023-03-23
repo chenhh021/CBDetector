@@ -1,0 +1,39 @@
+diff --git a/lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene80/Lucene80DocValuesProducer.java b/lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene80/Lucene80DocValuesProducer.java
+index ad04745..32a898d 100644
+--- a/lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene80/Lucene80DocValuesProducer.java
++++ b/lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene80/Lucene80DocValuesProducer.java
+@@ -1653,15 +1653,21 @@
+           return disi.advanceExact(target);
+         }
+ 
+-        @Override
+-        public long nextOrd() throws IOException {
++        private boolean set() {
+           if (set == false) {
+             final int index = disi.index();
+-            final long start = addresses.get(index);
+-            this.start = start + 1;
++            start = addresses.get(index);
+             end = addresses.get(index + 1L);
+             set = true;
+-            return ords.get(start);
++            return true;
++          }
++          return false;
++        }
++
++        @Override
++        public long nextOrd() throws IOException {
++          if (set()) {
++            return ords.get(start++);
+           } else if (start == end) {
+             return NO_MORE_ORDS;
+           } else {
+@@ -1671,6 +1677,7 @@
+ 
+         @Override
+         public long docValueCount() {
++          set();
+           return end - start;
+         }
+       };

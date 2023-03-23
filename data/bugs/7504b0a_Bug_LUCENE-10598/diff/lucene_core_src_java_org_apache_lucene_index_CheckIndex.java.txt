@@ -1,0 +1,33 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/index/CheckIndex.java b/lucene/core/src/java/org/apache/lucene/index/CheckIndex.java
+index 2b47c6f..81e9eb2 100644
+--- a/lucene/core/src/java/org/apache/lucene/index/CheckIndex.java
++++ b/lucene/core/src/java/org/apache/lucene/index/CheckIndex.java
+@@ -3357,6 +3357,14 @@
+       long ord;
+       int ordCount = 0;
+       while ((ord = dv.nextOrd()) != SortedSetDocValues.NO_MORE_ORDS) {
++        if (count != dv.docValueCount()) {
++          throw new CheckIndexException(
++              "value count changed from "
++                  + count
++                  + " to "
++                  + dv.docValueCount()
++                  + " during iterating over all values");
++        }
+         long ord2 = dv2.nextOrd();
+         if (ord != ord2) {
+           throw new CheckIndexException(
+@@ -3374,6 +3382,13 @@
+         seenOrds.set(ord);
+         ordCount++;
+       }
++      if (dv.docValueCount() != dv2.docValueCount()) {
++        throw new CheckIndexException(
++            "dv and dv2 report different values count after iterating over all values: "
++                + dv.docValueCount()
++                + " != "
++                + dv2.docValueCount());
++      }
+       if (ordCount == 0) {
+         throw new CheckIndexException(
+             "dv for field: " + fieldName + " returned docID=" + docID + " yet has no ordinals");

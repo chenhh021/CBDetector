@@ -1,0 +1,13 @@
+diff --git a/lucene/queries/src/java/org/apache/lucene/queries/intervals/OverlappingIntervalsSource.java b/lucene/queries/src/java/org/apache/lucene/queries/intervals/OverlappingIntervalsSource.java
+index ff52cf8..bb8c5bb 100644
+--- a/lucene/queries/src/java/org/apache/lucene/queries/intervals/OverlappingIntervalsSource.java
++++ b/lucene/queries/src/java/org/apache/lucene/queries/intervals/OverlappingIntervalsSource.java
+@@ -29,7 +29,7 @@
+   private final IntervalsSource reference;
+ 
+   OverlappingIntervalsSource(IntervalsSource source, IntervalsSource reference) {
+-    super(Arrays.asList(source, reference), false);
++    super(Arrays.asList(source, reference));
+     this.source = source;
+     this.reference = reference;
+   }

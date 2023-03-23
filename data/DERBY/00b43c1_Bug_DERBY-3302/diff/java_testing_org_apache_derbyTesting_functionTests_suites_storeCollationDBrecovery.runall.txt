@@ -1,8 +1,0 @@
-diff --git a/java/testing/org/apache/derbyTesting/functionTests/suites/storeCollationDBrecovery.runall b/java/testing/org/apache/derbyTesting/functionTests/suites/storeCollationDBrecovery.runall
-new file mode 100644
-index 0000000..ffe5a45
---- /dev/null
-+++ b/java/testing/org/apache/derbyTesting/functionTests/suites/storeCollationDBrecovery.runall
-@@ -0,0 +1,2 @@
-+store/col_rec1.java
-+store/col_rec2.java

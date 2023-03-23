@@ -1,0 +1,13 @@
+diff --git a/gradle/testing/defaults-tests.gradle b/gradle/testing/defaults-tests.gradle
+index 4d36a67..a6d59ee 100644
+--- a/gradle/testing/defaults-tests.gradle
++++ b/gradle/testing/defaults-tests.gradle
+@@ -90,7 +90,7 @@
+ 
+     tasks.withType(Test) {
+       ext {
+-        testOutputsDir = file("${reports.junitXml.outputLocation}/outputs")
++        testOutputsDir = file("${reports.junitXml.outputLocation.get()}/outputs")
+       }
+ 
+       // LUCENE-9660: Make it possible to always rerun tests, even if they're incrementally up-to-date.

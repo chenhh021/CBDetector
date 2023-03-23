@@ -1,0 +1,13 @@
+diff --git a/lucene/codecs/src/java/org/apache/lucene/codecs/uniformsplit/sharedterms/STMergingTermsEnum.java b/lucene/codecs/src/java/org/apache/lucene/codecs/uniformsplit/sharedterms/STMergingTermsEnum.java
+index 199b2f7..7a772c3 100644
+--- a/lucene/codecs/src/java/org/apache/lucene/codecs/uniformsplit/sharedterms/STMergingTermsEnum.java
++++ b/lucene/codecs/src/java/org/apache/lucene/codecs/uniformsplit/sharedterms/STMergingTermsEnum.java
+@@ -34,7 +34,7 @@
+  *
+  * @lucene.experimental
+  */
+-public class STMergingTermsEnum extends TermsEnum {
++class STMergingTermsEnum extends TermsEnum {
+ 
+   protected final String fieldName;
+   protected final MultiSegmentsPostingsEnum multiPostingsEnum;

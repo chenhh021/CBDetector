@@ -1,0 +1,15 @@
+diff --git a/lucene/suggest/src/test/org/apache/lucene/search/spell/TestLuceneDictionary.java b/lucene/suggest/src/test/org/apache/lucene/search/spell/TestLuceneDictionary.java
+index b4a47b2..a7bed48 100644
+--- a/lucene/suggest/src/test/org/apache/lucene/search/spell/TestLuceneDictionary.java
++++ b/lucene/suggest/src/test/org/apache/lucene/search/spell/TestLuceneDictionary.java
+@@ -187,7 +187,9 @@
+     indexReader = DirectoryReader.open(store);
+     sc.indexDictionary(
+         new LuceneDictionary(indexReader, "contents"), newIndexWriterConfig(null), false);
+-    String[] suggestions = sc.suggestSimilar("Tam", 1);
++    String[] suggestions = sc.suggestSimilar("", 1);
++    assertEquals(0, suggestions.length);
++    suggestions = sc.suggestSimilar("Tam", 1);
+     assertEquals(1, suggestions.length);
+     assertEquals("Tom", suggestions[0]);
+     suggestions = sc.suggestSimilar("Jarry", 1);

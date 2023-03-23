@@ -1,18 +1,18 @@
 package parseTest;
+
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import parsers.java.JavaParser;
-import parsers.java.JavaLexer;
-import parsers.java.JavaParserBaseVisitor;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import parsers.java.JavaLexer;
+import parsers.java.JavaParser;
 
 import java.io.IOException;
 
 public class javaTest {
     public static void main(String[] args) throws IOException {
-        CharStream input = CharStreams.fromFileName("D:\\chh\\SE\\projects\\CLCDSA\\CLCDSA\\CLCDSA_Code\\src\\test.java");
+        CharStream input = CharStreams.fromFileName("D:/code/java-csharp-ast/src/bugs/04fb8c0_Bug_LUCENE-10118/from/lucene_core_src_test_org_apache_lucene_index_TestConcurrentMergeScheduler.java");
         JavaLexer lexer = new JavaLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         JavaParser parser = new JavaParser(tokens); // Parser Created

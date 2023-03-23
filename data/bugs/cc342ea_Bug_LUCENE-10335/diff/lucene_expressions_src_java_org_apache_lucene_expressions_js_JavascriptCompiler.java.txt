@@ -1,0 +1,18 @@
+diff --git a/lucene/expressions/src/java/org/apache/lucene/expressions/js/JavascriptCompiler.java b/lucene/expressions/src/java/org/apache/lucene/expressions/js/JavascriptCompiler.java
+index 11744ca..06fc8bd 100644
+--- a/lucene/expressions/src/java/org/apache/lucene/expressions/js/JavascriptCompiler.java
++++ b/lucene/expressions/src/java/org/apache/lucene/expressions/js/JavascriptCompiler.java
+@@ -730,10 +730,11 @@
+     Map<String, Method> map = new HashMap<>();
+     try {
+       final Properties props = new Properties();
++      var name = JavascriptCompiler.class.getSimpleName() + ".properties";
+       try (Reader in =
+           IOUtils.getDecodingReader(
+-              JavascriptCompiler.class,
+-              JavascriptCompiler.class.getSimpleName() + ".properties",
++              IOUtils.requireResourceNonNull(
++                  JavascriptCompiler.class.getResourceAsStream(name), name),
+               StandardCharsets.UTF_8)) {
+         props.load(in);
+       }

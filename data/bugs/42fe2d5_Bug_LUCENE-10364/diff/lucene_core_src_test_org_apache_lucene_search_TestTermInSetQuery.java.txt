@@ -1,0 +1,13 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/search/TestTermInSetQuery.java b/lucene/core/src/test/org/apache/lucene/search/TestTermInSetQuery.java
+index 13a3faf..9d54cd9 100644
+--- a/lucene/core/src/test/org/apache/lucene/search/TestTermInSetQuery.java
++++ b/lucene/core/src/test/org/apache/lucene/search/TestTermInSetQuery.java
+@@ -187,7 +187,7 @@
+     final long actualRamBytesUsed = RamUsageTester.ramUsed(query);
+     final long expectedRamBytesUsed = query.ramBytesUsed();
+     // error margin within 5%
+-    assertEquals(expectedRamBytesUsed, actualRamBytesUsed, actualRamBytesUsed / 20);
++    assertEquals(expectedRamBytesUsed, actualRamBytesUsed, actualRamBytesUsed / 20.d);
+   }
+ 
+   private static class TermsCountingDirectoryReaderWrapper extends FilterDirectoryReader {

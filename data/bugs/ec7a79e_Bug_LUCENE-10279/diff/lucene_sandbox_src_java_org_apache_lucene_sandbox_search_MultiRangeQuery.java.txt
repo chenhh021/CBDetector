@@ -1,0 +1,13 @@
+diff --git a/lucene/sandbox/src/java/org/apache/lucene/sandbox/search/MultiRangeQuery.java b/lucene/sandbox/src/java/org/apache/lucene/sandbox/search/MultiRangeQuery.java
+index 3d36420..a1528b0 100644
+--- a/lucene/sandbox/src/java/org/apache/lucene/sandbox/search/MultiRangeQuery.java
++++ b/lucene/sandbox/src/java/org/apache/lucene/sandbox/search/MultiRangeQuery.java
+@@ -48,7 +48,7 @@
+  */
+ public abstract class MultiRangeQuery extends Query {
+   /** Representation of a single clause in a MultiRangeQuery */
+-  public static class RangeClause {
++  public static final class RangeClause {
+     byte[] lowerValue;
+     byte[] upperValue;
+ 

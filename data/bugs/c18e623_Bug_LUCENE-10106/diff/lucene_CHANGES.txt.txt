@@ -1,0 +1,14 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index c39a7d4..f8acd3c 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -565,6 +565,9 @@
+ * LUCENE-10081: KoreanTokenizer should check the max backtrace gap on whitespaces.
+   (Jim Ferenczi)
+ 
++* LUCENE-10106: Sort optimization can wrongly skip the first document of
++  each segment (Nhat Nguyen)
++
+ Other
+ ---------------------
+ (No changes)

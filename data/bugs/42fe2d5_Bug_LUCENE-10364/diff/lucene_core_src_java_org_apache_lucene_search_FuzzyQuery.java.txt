@@ -1,0 +1,19 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/search/FuzzyQuery.java b/lucene/core/src/java/org/apache/lucene/search/FuzzyQuery.java
+index f0e9e28..260ce2b 100644
+--- a/lucene/core/src/java/org/apache/lucene/search/FuzzyQuery.java
++++ b/lucene/core/src/java/org/apache/lucene/search/FuzzyQuery.java
+@@ -197,10 +197,10 @@
+     if (!super.equals(obj)) return false;
+     if (getClass() != obj.getClass()) return false;
+     FuzzyQuery other = (FuzzyQuery) obj;
+-    return Objects.equals(maxEdits, other.maxEdits)
+-        && Objects.equals(prefixLength, other.prefixLength)
+-        && Objects.equals(maxExpansions, other.maxExpansions)
+-        && Objects.equals(transpositions, other.transpositions)
++    return maxEdits == other.maxEdits
++        && prefixLength == other.prefixLength
++        && maxExpansions == other.maxExpansions
++        && transpositions == other.transpositions
+         && Objects.equals(term, other.term);
+   }
+ 

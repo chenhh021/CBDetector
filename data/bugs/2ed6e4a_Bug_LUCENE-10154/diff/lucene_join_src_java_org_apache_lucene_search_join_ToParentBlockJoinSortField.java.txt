@@ -1,0 +1,60 @@
+diff --git a/lucene/join/src/java/org/apache/lucene/search/join/ToParentBlockJoinSortField.java b/lucene/join/src/java/org/apache/lucene/search/join/ToParentBlockJoinSortField.java
+index 4d0aa29..b97a3ca 100644
+--- a/lucene/join/src/java/org/apache/lucene/search/join/ToParentBlockJoinSortField.java
++++ b/lucene/join/src/java/org/apache/lucene/search/join/ToParentBlockJoinSortField.java
+@@ -23,6 +23,7 @@
+ import org.apache.lucene.index.FilterNumericDocValues;
+ import org.apache.lucene.index.LeafReaderContext;
+ import org.apache.lucene.index.NumericDocValues;
++import org.apache.lucene.index.PointValues;
+ import org.apache.lucene.index.SortedDocValues;
+ import org.apache.lucene.index.SortedNumericDocValues;
+ import org.apache.lucene.index.SortedSetDocValues;
+@@ -172,6 +173,11 @@
+             }
+             return BlockJoinSelector.wrap(sortedNumeric, type, parents, toIter(children));
+           }
++          // no sort optimization with points
++          @Override
++          protected PointValues getPointValues(LeafReaderContext context, String field) {
++            return null;
++          }
+         };
+       }
+     };
+@@ -196,6 +202,11 @@
+             }
+             return BlockJoinSelector.wrap(sortedNumeric, type, parents, toIter(children));
+           }
++          // no sort optimization with points
++          @Override
++          protected PointValues getPointValues(LeafReaderContext context, String field) {
++            return null;
++          }
+         };
+       }
+     };
+@@ -227,6 +238,11 @@
+               }
+             };
+           }
++          // no sort optimization with points
++          @Override
++          protected PointValues getPointValues(LeafReaderContext context, String field) {
++            return null;
++          }
+         };
+       }
+       ;
+@@ -260,6 +276,11 @@
+               }
+             };
+           }
++          // no sort optimization with points
++          @Override
++          protected PointValues getPointValues(LeafReaderContext context, String field) {
++            return null;
++          }
+         };
+       }
+     };

@@ -1,0 +1,7 @@
+diff --git a/lucene/core.tests/src/test/org/apache/lucene/core/testresources/accessible.txt b/lucene/core.tests/src/test/org/apache/lucene/core/testresources/accessible.txt
+new file mode 100644
+index 0000000..a2a6c1a
+--- /dev/null
++++ b/lucene/core.tests/src/test/org/apache/lucene/core/testresources/accessible.txt
+@@ -0,0 +1 @@
++This file should be accessible by ModuleResourceLoader.

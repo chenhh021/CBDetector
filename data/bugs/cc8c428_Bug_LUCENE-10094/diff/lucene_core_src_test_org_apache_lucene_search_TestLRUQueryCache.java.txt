@@ -1,0 +1,13 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/search/TestLRUQueryCache.java b/lucene/core/src/test/org/apache/lucene/search/TestLRUQueryCache.java
+index 57e7e7b..4173146 100644
+--- a/lucene/core/src/test/org/apache/lucene/search/TestLRUQueryCache.java
++++ b/lucene/core/src/test/org/apache/lucene/search/TestLRUQueryCache.java
+@@ -1877,7 +1877,7 @@
+     searcher.count(q); // add to cache
+ 
+     Weight weight = searcher.createWeight(searcher.rewrite(q), ScoreMode.COMPLETE_NO_SCORES, 1);
+-    assertNotEquals(-1, weight.count(reader.leaves().get(0)));
++    assertNotEquals(-1, weight.count(searcher.reader.leaves().get(0)));
+ 
+     reader.close();
+     w.close();

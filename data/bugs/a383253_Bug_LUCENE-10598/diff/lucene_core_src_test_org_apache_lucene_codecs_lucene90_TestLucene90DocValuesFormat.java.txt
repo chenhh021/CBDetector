@@ -1,0 +1,20 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/codecs/lucene90/TestLucene90DocValuesFormat.java b/lucene/core/src/test/org/apache/lucene/codecs/lucene90/TestLucene90DocValuesFormat.java
+index 2a11fef..ca8fbb1 100644
+--- a/lucene/core/src/test/org/apache/lucene/codecs/lucene90/TestLucene90DocValuesFormat.java
++++ b/lucene/core/src/test/org/apache/lucene/codecs/lucene90/TestLucene90DocValuesFormat.java
+@@ -265,6 +265,7 @@
+             assertTrue(valueSet.contains(sortedNumeric.nextValue()));
+           }
+           assertEquals(i, sortedSet.nextDoc());
++          assertEquals(valueSet.size(), sortedSet.docValueCount());
+           int sortedSetCount = 0;
+           while (true) {
+             long ord = sortedSet.nextOrd();
+@@ -488,6 +489,7 @@
+       for (int i = 0; i < maxDoc; ++i) {
+         assertEquals(i, values.nextDoc());
+         final int numValues = in.readVInt();
++        assertEquals(numValues, values.docValueCount());
+ 
+         for (int j = 0; j < numValues; ++j) {
+           b.setLength(in.readVInt());

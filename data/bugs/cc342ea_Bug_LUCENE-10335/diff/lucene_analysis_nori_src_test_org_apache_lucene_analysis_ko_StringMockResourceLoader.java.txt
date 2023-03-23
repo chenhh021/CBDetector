@@ -1,0 +1,21 @@
+diff --git a/lucene/analysis/nori/src/test/org/apache/lucene/analysis/ko/StringMockResourceLoader.java b/lucene/analysis/nori/src/test/org/apache/lucene/analysis/ko/StringMockResourceLoader.java
+index 5a9d9dd..e29bfbe 100644
+--- a/lucene/analysis/nori/src/test/org/apache/lucene/analysis/ko/StringMockResourceLoader.java
++++ b/lucene/analysis/nori/src/test/org/apache/lucene/analysis/ko/StringMockResourceLoader.java
+@@ -40,16 +40,6 @@
+   }
+ 
+   @Override
+-  public <T> T newInstance(String cname, Class<T> expectedType) {
+-    Class<? extends T> clazz = findClass(cname, expectedType);
+-    try {
+-      return clazz.getConstructor().newInstance();
+-    } catch (Exception e) {
+-      throw new RuntimeException("Cannot create instance: " + cname, e);
+-    }
+-  }
+-
+-  @Override
+   public InputStream openResource(String resource) throws IOException {
+     return new ByteArrayInputStream(text.getBytes(StandardCharsets.UTF_8));
+   }

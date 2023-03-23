@@ -1,0 +1,13 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/search/KnnVectorQuery.java b/lucene/core/src/java/org/apache/lucene/search/KnnVectorQuery.java
+index 1127521..9d581bd 100644
+--- a/lucene/core/src/java/org/apache/lucene/search/KnnVectorQuery.java
++++ b/lucene/core/src/java/org/apache/lucene/search/KnnVectorQuery.java
+@@ -318,7 +318,7 @@
+       return new Weight(this) {
+         @Override
+         public Explanation explain(LeafReaderContext context, int doc) {
+-          int found = Arrays.binarySearch(docs, doc);
++          int found = Arrays.binarySearch(docs, doc + context.docBase);
+           if (found < 0) {
+             return Explanation.noMatch("not in top " + k);
+           }

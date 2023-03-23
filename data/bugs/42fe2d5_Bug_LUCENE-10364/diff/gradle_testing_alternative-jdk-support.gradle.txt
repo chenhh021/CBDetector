@@ -1,0 +1,10 @@
+diff --git a/gradle/testing/alternative-jdk-support.gradle b/gradle/testing/alternative-jdk-support.gradle
+index d4ab22a..e66258c 100644
+--- a/gradle/testing/alternative-jdk-support.gradle
++++ b/gradle/testing/alternative-jdk-support.gradle
+@@ -88,3 +88,5 @@
+ rootProject.ext.runtimeJavaExecutable = jvmCurrent.javaExecutable
+ rootProject.ext.runtimeJavaHome = jvmCurrent.javaHome
+ rootProject.ext.runtimeJavaVersion = jvmDetector.getMetadata(jvmCurrent.javaHome).languageVersion
++rootProject.ext.usesAltJvm = (jvmGradle != jvmCurrent);
++

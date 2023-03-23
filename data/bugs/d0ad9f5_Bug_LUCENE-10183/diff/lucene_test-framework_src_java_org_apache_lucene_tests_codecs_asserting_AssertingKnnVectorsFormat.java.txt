@@ -1,0 +1,23 @@
+diff --git a/lucene/test-framework/src/java/org/apache/lucene/tests/codecs/asserting/AssertingKnnVectorsFormat.java b/lucene/test-framework/src/java/org/apache/lucene/tests/codecs/asserting/AssertingKnnVectorsFormat.java
+index 55b17d5..a38b19c 100644
+--- a/lucene/test-framework/src/java/org/apache/lucene/tests/codecs/asserting/AssertingKnnVectorsFormat.java
++++ b/lucene/test-framework/src/java/org/apache/lucene/tests/codecs/asserting/AssertingKnnVectorsFormat.java
+@@ -58,10 +58,15 @@
+     }
+ 
+     @Override
+-    public void writeField(FieldInfo fieldInfo, VectorValues values) throws IOException {
++    public void writeField(FieldInfo fieldInfo, KnnVectorsReader knnVectorsReader)
++        throws IOException {
+       assert fieldInfo != null;
+-      assert values != null;
+-      delegate.writeField(fieldInfo, values);
++      assert knnVectorsReader != null;
++      // assert that knnVectorsReader#getVectorValues returns different instances upon repeated
++      // calls
++      assert knnVectorsReader.getVectorValues(fieldInfo.name)
++          != knnVectorsReader.getVectorValues(fieldInfo.name);
++      delegate.writeField(fieldInfo, knnVectorsReader);
+     }
+ 
+     @Override

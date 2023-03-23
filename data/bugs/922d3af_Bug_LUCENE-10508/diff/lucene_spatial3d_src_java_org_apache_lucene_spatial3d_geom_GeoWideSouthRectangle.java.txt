@@ -1,0 +1,13 @@
+diff --git a/lucene/spatial3d/src/java/org/apache/lucene/spatial3d/geom/GeoWideSouthRectangle.java b/lucene/spatial3d/src/java/org/apache/lucene/spatial3d/geom/GeoWideSouthRectangle.java
+index 5320e22..7ccc258 100644
+--- a/lucene/spatial3d/src/java/org/apache/lucene/spatial3d/geom/GeoWideSouthRectangle.java
++++ b/lucene/spatial3d/src/java/org/apache/lucene/spatial3d/geom/GeoWideSouthRectangle.java
+@@ -87,7 +87,7 @@
+     if (extent < 0.0) {
+       extent += 2.0 * Math.PI;
+     }
+-    if (extent < Math.PI) {
++    if (extent < GeoWideRectangle.MIN_WIDE_EXTENT) {
+       throw new IllegalArgumentException("Width of rectangle too small");
+     }
+ 

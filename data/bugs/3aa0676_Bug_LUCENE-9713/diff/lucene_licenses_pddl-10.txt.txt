@@ -1,0 +1,10 @@
+diff --git a/lucene/licenses/pddl-10.txt b/lucene/licenses/pddl-10.txt
+index dce8904..679f7e5 100644
+--- a/lucene/licenses/pddl-10.txt
++++ b/lucene/licenses/pddl-10.txt
+@@ -1,4 +1,4 @@
+-﻿Public Domain Dedication and License (PDDL)
++Public Domain Dedication and License (PDDL)
+ 
+ 
+ Preamble

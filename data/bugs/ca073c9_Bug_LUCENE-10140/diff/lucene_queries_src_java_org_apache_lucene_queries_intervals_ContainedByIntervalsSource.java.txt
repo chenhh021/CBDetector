@@ -1,0 +1,13 @@
+diff --git a/lucene/queries/src/java/org/apache/lucene/queries/intervals/ContainedByIntervalsSource.java b/lucene/queries/src/java/org/apache/lucene/queries/intervals/ContainedByIntervalsSource.java
+index 43ad527..f8c50b1 100644
+--- a/lucene/queries/src/java/org/apache/lucene/queries/intervals/ContainedByIntervalsSource.java
++++ b/lucene/queries/src/java/org/apache/lucene/queries/intervals/ContainedByIntervalsSource.java
+@@ -33,7 +33,7 @@
+   private final IntervalsSource big;
+ 
+   private ContainedByIntervalsSource(IntervalsSource small, IntervalsSource big) {
+-    super(Arrays.asList(small, big), false);
++    super(Arrays.asList(small, big));
+     this.small = small;
+     this.big = big;
+   }

@@ -1,0 +1,16 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/index/SortedSetDocValues.java b/lucene/core/src/java/org/apache/lucene/index/SortedSetDocValues.java
+index a44b8b0..4ebd938 100644
+--- a/lucene/core/src/java/org/apache/lucene/index/SortedSetDocValues.java
++++ b/lucene/core/src/java/org/apache/lucene/index/SortedSetDocValues.java
+@@ -45,8 +45,9 @@
+   public abstract long nextOrd() throws IOException;
+ 
+   /**
+-   * Retrieves the number of values for the current document. This must always be greater than zero.
+-   * It is illegal to call this method after {@link #advanceExact(int)} returned {@code false}.
++   * Retrieves the number of unique ords for the current document. This must always be greater than
++   * zero. It is illegal to call this method after {@link #advanceExact(int)} returned {@code
++   * false}.
+    */
+   public abstract long docValueCount();
+ 

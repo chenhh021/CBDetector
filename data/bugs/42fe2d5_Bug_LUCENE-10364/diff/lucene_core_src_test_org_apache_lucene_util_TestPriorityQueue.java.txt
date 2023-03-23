@@ -1,0 +1,12 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/util/TestPriorityQueue.java b/lucene/core/src/test/org/apache/lucene/util/TestPriorityQueue.java
+index b6e131a..3152521 100644
+--- a/lucene/core/src/test/org/apache/lucene/util/TestPriorityQueue.java
++++ b/lucene/core/src/test/org/apache/lucene/util/TestPriorityQueue.java
+@@ -26,6 +26,7 @@
+ import org.hamcrest.MatcherAssert;
+ import org.hamcrest.Matchers;
+ 
++@SuppressWarnings("BoxedPrimitiveEquality")
+ public class TestPriorityQueue extends LuceneTestCase {
+ 
+   private static class IntegerQueue extends PriorityQueue<Integer> {

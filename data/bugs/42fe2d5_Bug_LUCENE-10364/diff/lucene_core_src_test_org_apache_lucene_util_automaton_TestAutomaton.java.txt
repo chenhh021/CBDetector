@@ -1,0 +1,13 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/util/automaton/TestAutomaton.java b/lucene/core/src/test/org/apache/lucene/util/automaton/TestAutomaton.java
+index aba4107..093882a 100644
+--- a/lucene/core/src/test/org/apache/lucene/util/automaton/TestAutomaton.java
++++ b/lucene/core/src/test/org/apache/lucene/util/automaton/TestAutomaton.java
+@@ -1027,7 +1027,7 @@
+               System.out.println("  prefixes=" + prefixes);
+             }
+ 
+-            for (int prefix : prefixes) {
++            for (int prefix : prefixes.stream().mapToInt(Integer::intValue).toArray()) {
+               // prefix is a leading ascii byte; we retain <prefix>* in a
+               Automaton a2 = new Automaton();
+               int init = a2.createState();

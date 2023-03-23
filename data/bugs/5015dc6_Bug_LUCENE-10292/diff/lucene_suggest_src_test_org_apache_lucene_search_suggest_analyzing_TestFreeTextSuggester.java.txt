@@ -1,0 +1,50 @@
+diff --git a/lucene/suggest/src/test/org/apache/lucene/search/suggest/analyzing/TestFreeTextSuggester.java b/lucene/suggest/src/test/org/apache/lucene/search/suggest/analyzing/TestFreeTextSuggester.java
+index 9ba4714..6f1df31 100644
+--- a/lucene/suggest/src/test/org/apache/lucene/search/suggest/analyzing/TestFreeTextSuggester.java
++++ b/lucene/suggest/src/test/org/apache/lucene/search/suggest/analyzing/TestFreeTextSuggester.java
+@@ -22,6 +22,7 @@
+ import java.nio.file.Files;
+ import java.nio.file.Path;
+ import java.util.ArrayList;
++import java.util.Arrays;
+ import java.util.Collections;
+ import java.util.Comparator;
+ import java.util.HashMap;
+@@ -39,6 +40,7 @@
+ import org.apache.lucene.search.suggest.InputArrayIterator;
+ import org.apache.lucene.search.suggest.InputIterator;
+ import org.apache.lucene.search.suggest.Lookup.LookupResult;
++import org.apache.lucene.search.suggest.SuggestRebuildTestUtil;
+ import org.apache.lucene.tests.analysis.MockAnalyzer;
+ import org.apache.lucene.tests.analysis.MockTokenizer;
+ import org.apache.lucene.tests.util.LineFileDocs;
+@@ -93,6 +95,29 @@
+     a.close();
+   }
+ 
++  public void testLookupsDuringReBuild() throws Exception {
++    Analyzer a = new MockAnalyzer(random());
++    FreeTextSuggester sug = new FreeTextSuggester(a, a, 2, (byte) 0x20);
++    SuggestRebuildTestUtil.testLookupsDuringReBuild(
++        sug,
++        Arrays.asList(new Input("foo bar baz blah", 50)),
++        s -> {
++          assertEquals(1, s.getCount());
++          List<LookupResult> result = s.lookup("foo ", true, 5);
++          assertEquals(1, result.size());
++          assertEquals("foo bar", result.get(0).key.toString());
++        },
++        Arrays.asList(new Input("boo foo bar foo bee", 20)),
++        s -> {
++          assertEquals(2, s.getCount());
++          List<LookupResult> result = s.lookup("foo ", true, 5);
++          assertEquals(2, result.size());
++          assertEquals("foo bar", result.get(0).key.toString());
++          assertEquals("foo bee", result.get(1).key.toString());
++        });
++    a.close();
++  }
++
+   public void testIllegalByteDuringBuild() throws Exception {
+     // Default separator is INFORMATION SEPARATOR TWO
+     // (0x1e), so no input token is allowed to contain it

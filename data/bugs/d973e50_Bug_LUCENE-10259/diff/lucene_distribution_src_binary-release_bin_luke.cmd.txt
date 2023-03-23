@@ -1,0 +1,11 @@
+diff --git a/lucene/distribution/src/binary-release/bin/luke.cmd b/lucene/distribution/src/binary-release/bin/luke.cmd
+index 26f7577..cb8b1e3 100644
+--- a/lucene/distribution/src/binary-release/bin/luke.cmd
++++ b/lucene/distribution/src/binary-release/bin/luke.cmd
+@@ -17,5 +17,5 @@
+ 
+ SETLOCAL
+ SET MODULES=%~dp0..
+-start javaw --module-path %MODULES%\modules;%MODULES%\modules-thirdparty --add-modules org.apache.logging.log4j --module lucene.luke
++start javaw --module-path "%MODULES%\modules;%MODULES%\modules-thirdparty" --add-modules org.apache.logging.log4j --module lucene.luke
+ ENDLOCAL

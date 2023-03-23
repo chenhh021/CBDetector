@@ -1,0 +1,13 @@
+diff --git a/lucene/facet/src/java/org/apache/lucene/facet/FacetResult.java b/lucene/facet/src/java/org/apache/lucene/facet/FacetResult.java
+index 3955646..5bf2951 100644
+--- a/lucene/facet/src/java/org/apache/lucene/facet/FacetResult.java
++++ b/lucene/facet/src/java/org/apache/lucene/facet/FacetResult.java
+@@ -32,8 +32,6 @@
+    * topN. If a document contains multiple values for the same path, it will only be counted once in
+    * this value.
+    */
+-  // TODO: This may not hold true for SSDV faceting, where docs can be counted more than
+-  // once. We should fix this. See LUCENE-9952
+   public final Number value;
+ 
+   /** How many child labels were encountered. */

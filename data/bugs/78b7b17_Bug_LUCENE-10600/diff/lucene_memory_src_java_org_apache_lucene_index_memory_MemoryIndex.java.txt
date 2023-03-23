@@ -1,0 +1,13 @@
+diff --git a/lucene/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java b/lucene/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
+index 482cb5f..d4ba82e 100644
+--- a/lucene/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
++++ b/lucene/memory/src/java/org/apache/lucene/index/memory/MemoryIndex.java
+@@ -1155,7 +1155,7 @@
+       }
+ 
+       @Override
+-      public long docValueCount() {
++      public int docValueCount() {
+         return values.size();
+       }
+ 

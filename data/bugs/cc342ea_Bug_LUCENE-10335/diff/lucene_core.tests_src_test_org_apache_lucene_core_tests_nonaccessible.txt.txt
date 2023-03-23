@@ -1,0 +1,7 @@
+diff --git a/lucene/core.tests/src/test/org/apache/lucene/core/tests/nonaccessible.txt b/lucene/core.tests/src/test/org/apache/lucene/core/tests/nonaccessible.txt
+new file mode 100644
+index 0000000..046f4bd
+--- /dev/null
++++ b/lucene/core.tests/src/test/org/apache/lucene/core/tests/nonaccessible.txt
+@@ -0,0 +1 @@
++This file should not be accessible by ModuleResourceLoader.

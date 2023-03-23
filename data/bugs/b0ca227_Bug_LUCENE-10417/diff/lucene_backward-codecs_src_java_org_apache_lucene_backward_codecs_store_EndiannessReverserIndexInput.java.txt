@@ -1,0 +1,19 @@
+diff --git a/lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/store/EndiannessReverserIndexInput.java b/lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/store/EndiannessReverserIndexInput.java
+index 4a1c056..d7d0b76 100644
+--- a/lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/store/EndiannessReverserIndexInput.java
++++ b/lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/store/EndiannessReverserIndexInput.java
+@@ -81,14 +81,6 @@
+   }
+ 
+   @Override
+-  public void readInts(int[] dst, int offset, int length) throws IOException {
+-    in.readInts(dst, offset, length);
+-    for (int i = 0; i < length; ++i) {
+-      dst[offset + i] = Integer.reverseBytes(dst[offset + i]);
+-    }
+-  }
+-
+-  @Override
+   public void readFloats(float[] dst, int offset, int length) throws IOException {
+     in.readFloats(dst, offset, length);
+     for (int i = 0; i < length; ++i) {

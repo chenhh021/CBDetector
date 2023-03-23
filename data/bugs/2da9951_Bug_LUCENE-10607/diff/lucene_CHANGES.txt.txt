@@ -1,0 +1,13 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index 66d0924..c28539c 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -122,6 +122,8 @@
+ 
+ * LUCENE-10611: Fix failure when KnnVectorQuery has very selective filter (Kaival Parikh)
+ 
++* LUCENE-10607: Fix potential integer overflow in maxArcs computions (Tang Donghai)
++
+ Other
+ ---------------------
+ 

@@ -1,0 +1,13 @@
+diff --git a/lucene/test-framework/src/java/org/apache/lucene/tests/index/AssertingLeafReader.java b/lucene/test-framework/src/java/org/apache/lucene/tests/index/AssertingLeafReader.java
+index b464cb7..85c71ad 100644
+--- a/lucene/test-framework/src/java/org/apache/lucene/tests/index/AssertingLeafReader.java
++++ b/lucene/test-framework/src/java/org/apache/lucene/tests/index/AssertingLeafReader.java
+@@ -1065,7 +1065,7 @@
+     }
+ 
+     @Override
+-    public long docValueCount() {
++    public int docValueCount() {
+       return in.docValueCount();
+     }
+ 

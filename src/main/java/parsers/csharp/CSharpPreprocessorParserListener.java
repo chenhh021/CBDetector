@@ -1,7 +1,5 @@
-// Generated from .\CSharpPreprocessorParser.g4 by ANTLR 4.9.2
 package parsers.csharp;
-import java.util.Stack;
-import java.util.HashSet;
+// Generated from CSharpPreprocessorParser.g4 by ANTLR 4.12.0
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**

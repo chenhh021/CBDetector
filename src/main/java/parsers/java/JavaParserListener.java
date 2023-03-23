@@ -1,4 +1,4 @@
-// Generated from .\JavaParser.g4 by ANTLR 4.9.2
+// Generated from JavaParser.g4 by ANTLR 4.12.0
 package parsers.java;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -268,6 +268,16 @@ public interface JavaParserListener extends ParseTreeListener {
 	 */
 	void exitConstructorDeclaration(JavaParser.ConstructorDeclarationContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link JavaParser#compactConstructorDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterCompactConstructorDeclaration(JavaParser.CompactConstructorDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#compactConstructorDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitCompactConstructorDeclaration(JavaParser.CompactConstructorDeclarationContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JavaParser#fieldDeclaration}.
 	 * @param ctx the parse tree
 	 */
@@ -347,6 +357,16 @@ public interface JavaParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitGenericInterfaceMethodDeclaration(JavaParser.GenericInterfaceMethodDeclarationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#interfaceCommonBodyDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterInterfaceCommonBodyDeclaration(JavaParser.InterfaceCommonBodyDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#interfaceCommonBodyDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitInterfaceCommonBodyDeclaration(JavaParser.InterfaceCommonBodyDeclarationContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JavaParser#variableDeclarators}.
 	 * @param ctx the parse tree
@@ -438,6 +458,16 @@ public interface JavaParserListener extends ParseTreeListener {
 	 */
 	void exitFormalParameters(JavaParser.FormalParametersContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link JavaParser#receiverParameter}.
+	 * @param ctx the parse tree
+	 */
+	void enterReceiverParameter(JavaParser.ReceiverParameterContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#receiverParameter}.
+	 * @param ctx the parse tree
+	 */
+	void exitReceiverParameter(JavaParser.ReceiverParameterContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JavaParser#formalParameterList}.
 	 * @param ctx the parse tree
 	 */
@@ -467,6 +497,26 @@ public interface JavaParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitLastFormalParameter(JavaParser.LastFormalParameterContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#lambdaLVTIList}.
+	 * @param ctx the parse tree
+	 */
+	void enterLambdaLVTIList(JavaParser.LambdaLVTIListContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#lambdaLVTIList}.
+	 * @param ctx the parse tree
+	 */
+	void exitLambdaLVTIList(JavaParser.LambdaLVTIListContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#lambdaLVTIParameter}.
+	 * @param ctx the parse tree
+	 */
+	void enterLambdaLVTIParameter(JavaParser.LambdaLVTIParameterContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#lambdaLVTIParameter}.
+	 * @param ctx the parse tree
+	 */
+	void exitLambdaLVTIParameter(JavaParser.LambdaLVTIParameterContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JavaParser#qualifiedName}.
 	 * @param ctx the parse tree
@@ -648,6 +698,96 @@ public interface JavaParserListener extends ParseTreeListener {
 	 */
 	void exitDefaultValue(JavaParser.DefaultValueContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link JavaParser#moduleDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterModuleDeclaration(JavaParser.ModuleDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#moduleDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitModuleDeclaration(JavaParser.ModuleDeclarationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#moduleBody}.
+	 * @param ctx the parse tree
+	 */
+	void enterModuleBody(JavaParser.ModuleBodyContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#moduleBody}.
+	 * @param ctx the parse tree
+	 */
+	void exitModuleBody(JavaParser.ModuleBodyContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#moduleDirective}.
+	 * @param ctx the parse tree
+	 */
+	void enterModuleDirective(JavaParser.ModuleDirectiveContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#moduleDirective}.
+	 * @param ctx the parse tree
+	 */
+	void exitModuleDirective(JavaParser.ModuleDirectiveContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#requiresModifier}.
+	 * @param ctx the parse tree
+	 */
+	void enterRequiresModifier(JavaParser.RequiresModifierContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#requiresModifier}.
+	 * @param ctx the parse tree
+	 */
+	void exitRequiresModifier(JavaParser.RequiresModifierContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#recordDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterRecordDeclaration(JavaParser.RecordDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#recordDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitRecordDeclaration(JavaParser.RecordDeclarationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#recordHeader}.
+	 * @param ctx the parse tree
+	 */
+	void enterRecordHeader(JavaParser.RecordHeaderContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#recordHeader}.
+	 * @param ctx the parse tree
+	 */
+	void exitRecordHeader(JavaParser.RecordHeaderContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#recordComponentList}.
+	 * @param ctx the parse tree
+	 */
+	void enterRecordComponentList(JavaParser.RecordComponentListContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#recordComponentList}.
+	 * @param ctx the parse tree
+	 */
+	void exitRecordComponentList(JavaParser.RecordComponentListContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#recordComponent}.
+	 * @param ctx the parse tree
+	 */
+	void enterRecordComponent(JavaParser.RecordComponentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#recordComponent}.
+	 * @param ctx the parse tree
+	 */
+	void exitRecordComponent(JavaParser.RecordComponentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#recordBody}.
+	 * @param ctx the parse tree
+	 */
+	void enterRecordBody(JavaParser.RecordBodyContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#recordBody}.
+	 * @param ctx the parse tree
+	 */
+	void exitRecordBody(JavaParser.RecordBodyContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JavaParser#block}.
 	 * @param ctx the parse tree
 	 */
@@ -677,6 +817,26 @@ public interface JavaParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitLocalVariableDeclaration(JavaParser.LocalVariableDeclarationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#identifier}.
+	 * @param ctx the parse tree
+	 */
+	void enterIdentifier(JavaParser.IdentifierContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#identifier}.
+	 * @param ctx the parse tree
+	 */
+	void exitIdentifier(JavaParser.IdentifierContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#typeIdentifier}.
+	 * @param ctx the parse tree
+	 */
+	void enterTypeIdentifier(JavaParser.TypeIdentifierContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#typeIdentifier}.
+	 * @param ctx the parse tree
+	 */
+	void exitTypeIdentifier(JavaParser.TypeIdentifierContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JavaParser#localTypeDeclaration}.
 	 * @param ctx the parse tree
@@ -848,6 +1008,16 @@ public interface JavaParserListener extends ParseTreeListener {
 	 */
 	void exitExpression(JavaParser.ExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link JavaParser#pattern}.
+	 * @param ctx the parse tree
+	 */
+	void enterPattern(JavaParser.PatternContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#pattern}.
+	 * @param ctx the parse tree
+	 */
+	void exitPattern(JavaParser.PatternContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JavaParser#lambdaExpression}.
 	 * @param ctx the parse tree
 	 */
@@ -887,6 +1057,46 @@ public interface JavaParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitPrimary(JavaParser.PrimaryContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#switchExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterSwitchExpression(JavaParser.SwitchExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#switchExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitSwitchExpression(JavaParser.SwitchExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#switchLabeledRule}.
+	 * @param ctx the parse tree
+	 */
+	void enterSwitchLabeledRule(JavaParser.SwitchLabeledRuleContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#switchLabeledRule}.
+	 * @param ctx the parse tree
+	 */
+	void exitSwitchLabeledRule(JavaParser.SwitchLabeledRuleContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#guardedPattern}.
+	 * @param ctx the parse tree
+	 */
+	void enterGuardedPattern(JavaParser.GuardedPatternContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#guardedPattern}.
+	 * @param ctx the parse tree
+	 */
+	void exitGuardedPattern(JavaParser.GuardedPatternContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#switchRuleOutcome}.
+	 * @param ctx the parse tree
+	 */
+	void enterSwitchRuleOutcome(JavaParser.SwitchRuleOutcomeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#switchRuleOutcome}.
+	 * @param ctx the parse tree
+	 */
+	void exitSwitchRuleOutcome(JavaParser.SwitchRuleOutcomeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JavaParser#classType}.
 	 * @param ctx the parse tree

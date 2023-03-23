@@ -1,0 +1,13 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/index/SingletonSortedSetDocValues.java b/lucene/core/src/java/org/apache/lucene/index/SingletonSortedSetDocValues.java
+index 754f3fc..3186d5b 100644
+--- a/lucene/core/src/java/org/apache/lucene/index/SingletonSortedSetDocValues.java
++++ b/lucene/core/src/java/org/apache/lucene/index/SingletonSortedSetDocValues.java
+@@ -58,7 +58,7 @@
+   }
+ 
+   @Override
+-  public long docValueCount() {
++  public int docValueCount() {
+     return 1;
+   }
+ 

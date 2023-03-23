@@ -1,0 +1,21 @@
+diff --git a/gradle/validation/validate-source-patterns.gradle b/gradle/validation/validate-source-patterns.gradle
+index 224853e..ee8952a 100644
+--- a/gradle/validation/validate-source-patterns.gradle
++++ b/gradle/validation/validate-source-patterns.gradle
+@@ -79,6 +79,7 @@
+ 
+       // default excludes.
+       exclude 'build/**'
++      exclude '**/.idea/**'
+ 
+       // ignore txt files in source resources and tests.
+       exclude 'src/**/*.txt'
+@@ -248,7 +249,7 @@
+       logger.debug('Scanning source file: {}', f);
+ 
+       def text = f.getText('UTF-8');
+-      invalidPatterns.each{ pattern,name ->
++      invalidPatterns.each { pattern, name ->
+         if (pattern.matcher(text).find()) {
+           reportViolation(f, name);
+         }

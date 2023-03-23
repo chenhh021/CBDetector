@@ -1,0 +1,19 @@
+diff --git a/lucene/facet/src/test/org/apache/lucene/facet/taxonomy/TestTaxonomyFacetSumValueSource.java b/lucene/facet/src/test/org/apache/lucene/facet/taxonomy/TestTaxonomyFacetSumValueSource.java
+index cdb624b..53630a8 100644
+--- a/lucene/facet/src/test/org/apache/lucene/facet/taxonomy/TestTaxonomyFacetSumValueSource.java
++++ b/lucene/facet/src/test/org/apache/lucene/facet/taxonomy/TestTaxonomyFacetSumValueSource.java
+@@ -353,8 +353,13 @@
+     IndexWriter iw = new IndexWriter(indexDir, newIndexWriterConfig(new MockAnalyzer(random())));
+ 
+     FacetsConfig config = new FacetsConfig();
++
++    // Add a doc without the price field to exercise the bug found in LUCENE-10491:
++    Document doc = new Document();
++    iw.addDocument(config.build(taxoWriter, doc));
++
+     for (int i = 0; i < 4; i++) {
+-      Document doc = new Document();
++      doc = new Document();
+       doc.add(new NumericDocValuesField("price", (i + 1)));
+       doc.add(new FacetField("a", Integer.toString(i % 2)));
+       iw.addDocument(config.build(taxoWriter, doc));

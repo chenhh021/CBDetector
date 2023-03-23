@@ -1,0 +1,27 @@
+diff --git a/lucene/queryparser/src/java/org/apache/lucene/queryparser/flexible/standard/builders/PrefixWildcardQueryNodeBuilder.java b/lucene/queryparser/src/java/org/apache/lucene/queryparser/flexible/standard/builders/PrefixWildcardQueryNodeBuilder.java
+index 3f09279..55f230b 100644
+--- a/lucene/queryparser/src/java/org/apache/lucene/queryparser/flexible/standard/builders/PrefixWildcardQueryNodeBuilder.java
++++ b/lucene/queryparser/src/java/org/apache/lucene/queryparser/flexible/standard/builders/PrefixWildcardQueryNodeBuilder.java
+@@ -36,16 +36,15 @@
+ 
+     PrefixWildcardQueryNode wildcardNode = (PrefixWildcardQueryNode) queryNode;
+ 
+-    String text =
+-        wildcardNode.getText().subSequence(0, wildcardNode.getText().length() - 1).toString();
+-    PrefixQuery q = new PrefixQuery(new Term(wildcardNode.getFieldAsString(), text));
+-
+     MultiTermQuery.RewriteMethod method =
+         (MultiTermQuery.RewriteMethod) queryNode.getTag(MultiTermRewriteMethodProcessor.TAG_ID);
+-    if (method != null) {
+-      q.setRewriteMethod(method);
++    if (method == null) {
++      method = MultiTermQuery.CONSTANT_SCORE_REWRITE;
+     }
+ 
+-    return q;
++    String text =
++        wildcardNode.getText().subSequence(0, wildcardNode.getText().length() - 1).toString();
++
++    return new PrefixQuery(new Term(wildcardNode.getFieldAsString(), text), method);
+   }
+ }

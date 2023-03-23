@@ -1,0 +1,31 @@
+diff --git a/lucene/facet/src/java/org/apache/lucene/facet/sortedset/ConcurrentSortedSetDocValuesFacetCounts.java b/lucene/facet/src/java/org/apache/lucene/facet/sortedset/ConcurrentSortedSetDocValuesFacetCounts.java
+index 09b305b..1ee7863 100644
+--- a/lucene/facet/src/java/org/apache/lucene/facet/sortedset/ConcurrentSortedSetDocValuesFacetCounts.java
++++ b/lucene/facet/src/java/org/apache/lucene/facet/sortedset/ConcurrentSortedSetDocValuesFacetCounts.java
+@@ -161,7 +161,6 @@
+     final MatchingDocs hits;
+     final OrdinalMap ordinalMap;
+     final int segOrd;
+-    final Bits liveDocs;
+ 
+     public CountOneSegment(
+         LeafReader leafReader, MatchingDocs hits, OrdinalMap ordinalMap, int segOrd) {
+@@ -170,7 +169,6 @@
+       this.hits = hits;
+       this.ordinalMap = ordinalMap;
+       this.segOrd = segOrd;
+-      this.liveDocs = leafReader.getLiveDocs();
+     }
+ 
+     @Override
+@@ -198,6 +196,10 @@
+       DocIdSetIterator it;
+       if (hits == null) {
+         // count all
++        // Initializing liveDocs bits in the constructor leads to a situation where liveDocs bits
++        // get initialized in the calling thread but get used in a different thread leading to an
++        // AssertionError. See LUCENE-10134
++        final Bits liveDocs = leafReader.getLiveDocs();
+         it = (liveDocs != null) ? FacetUtils.liveDocsDISI(valuesIt, liveDocs) : valuesIt;
+       } else {
+         it = ConjunctionUtils.intersectIterators(Arrays.asList(hits.bits.iterator(), valuesIt));

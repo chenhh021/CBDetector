@@ -1,0 +1,13 @@
+diff --git a/lucene/codecs/src/java/org/apache/lucene/codecs/simpletext/SimpleTextDocValuesReader.java b/lucene/codecs/src/java/org/apache/lucene/codecs/simpletext/SimpleTextDocValuesReader.java
+index c5a7c8b..708392a 100644
+--- a/lucene/codecs/src/java/org/apache/lucene/codecs/simpletext/SimpleTextDocValuesReader.java
++++ b/lucene/codecs/src/java/org/apache/lucene/codecs/simpletext/SimpleTextDocValuesReader.java
+@@ -728,7 +728,7 @@
+       }
+ 
+       @Override
+-      public long docValueCount() {
++      public int docValueCount() {
+         return currentOrds.length;
+       }
+ 

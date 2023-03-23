@@ -1,0 +1,13 @@
+diff --git a/lucene/spatial3d/src/java/org/apache/lucene/spatial3d/geom/GeoWideDegenerateHorizontalLine.java b/lucene/spatial3d/src/java/org/apache/lucene/spatial3d/geom/GeoWideDegenerateHorizontalLine.java
+index c1e8bd3..d1bb6ed 100644
+--- a/lucene/spatial3d/src/java/org/apache/lucene/spatial3d/geom/GeoWideDegenerateHorizontalLine.java
++++ b/lucene/spatial3d/src/java/org/apache/lucene/spatial3d/geom/GeoWideDegenerateHorizontalLine.java
+@@ -83,7 +83,7 @@
+     if (extent < 0.0) {
+       extent += 2.0 * Math.PI;
+     }
+-    if (extent < Math.PI) {
++    if (extent < GeoWideRectangle.MIN_WIDE_EXTENT) {
+       throw new IllegalArgumentException("Width of rectangle too small");
+     }
+ 

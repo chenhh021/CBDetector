@@ -1,0 +1,28 @@
+diff --git a/lucene/analysis/common/src/java/org/apache/lucene/analysis/bg/BulgarianAnalyzer.java b/lucene/analysis/common/src/java/org/apache/lucene/analysis/bg/BulgarianAnalyzer.java
+index 4c240b4..ae62c99 100644
+--- a/lucene/analysis/common/src/java/org/apache/lucene/analysis/bg/BulgarianAnalyzer.java
++++ b/lucene/analysis/common/src/java/org/apache/lucene/analysis/bg/BulgarianAnalyzer.java
+@@ -26,8 +26,10 @@
+ import org.apache.lucene.analysis.StopwordAnalyzerBase;
+ import org.apache.lucene.analysis.TokenStream;
+ import org.apache.lucene.analysis.Tokenizer;
++import org.apache.lucene.analysis.WordlistLoader;
+ import org.apache.lucene.analysis.miscellaneous.SetKeywordMarkerFilter;
+ import org.apache.lucene.analysis.standard.StandardTokenizer;
++import org.apache.lucene.util.IOUtils;
+ 
+ /**
+  * {@link Analyzer} for Bulgarian.
+@@ -66,7 +68,11 @@
+     static {
+       try {
+         DEFAULT_STOP_SET =
+-            loadStopwordSet(false, BulgarianAnalyzer.class, DEFAULT_STOPWORD_FILE, "#");
++            WordlistLoader.getWordSet(
++                IOUtils.requireResourceNonNull(
++                    BulgarianAnalyzer.class.getResourceAsStream(DEFAULT_STOPWORD_FILE),
++                    DEFAULT_STOPWORD_FILE),
++                "#");
+       } catch (IOException ex) {
+         // default set should always be present as it is part of the
+         // distribution (JAR)

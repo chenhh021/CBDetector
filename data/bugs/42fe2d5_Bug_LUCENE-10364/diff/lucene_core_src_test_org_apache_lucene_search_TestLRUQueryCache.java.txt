@@ -1,0 +1,13 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/search/TestLRUQueryCache.java b/lucene/core/src/test/org/apache/lucene/search/TestLRUQueryCache.java
+index 648f133..18953ad 100644
+--- a/lucene/core/src/test/org/apache/lucene/search/TestLRUQueryCache.java
++++ b/lucene/core/src/test/org/apache/lucene/search/TestLRUQueryCache.java
+@@ -529,7 +529,7 @@
+     final long actualRamBytesUsed = RamUsageTester.ramUsed(queryCache, acc);
+     final long expectedRamBytesUsed = queryCache.ramBytesUsed();
+     // error < 30%
+-    assertEquals(actualRamBytesUsed, expectedRamBytesUsed, 30 * actualRamBytesUsed / 100);
++    assertEquals(actualRamBytesUsed, expectedRamBytesUsed, 30.d * actualRamBytesUsed / 100.d);
+ 
+     reader.close();
+     w.close();

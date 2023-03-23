@@ -1,0 +1,24 @@
+diff --git a/lucene/suggest/src/java/org/apache/lucene/search/suggest/document/NRTSuggester.java b/lucene/suggest/src/java/org/apache/lucene/search/suggest/document/NRTSuggester.java
+index f06f5f5..b25da6d 100644
+--- a/lucene/suggest/src/java/org/apache/lucene/search/suggest/document/NRTSuggester.java
++++ b/lucene/suggest/src/java/org/apache/lucene/search/suggest/document/NRTSuggester.java
+@@ -217,7 +217,7 @@
+               collector.seenSurfaceForms.add(key);
+             }
+             try {
+-              float score = scorer.score(decode(path.output.output1), path.boost);
++              float score = scorer.score((float) decode(path.output.output1), path.boost);
+               collector.collect(docID, spare.toCharsRef(), path.context, score);
+               return true;
+             } catch (IOException e) {
+@@ -275,8 +275,8 @@
+         Util.FSTPath<Pair<Long, BytesRef>> first, Util.FSTPath<Pair<Long, BytesRef>> second) {
+       int cmp =
+           Float.compare(
+-              scorer.score(decode(second.output.output1), second.boost),
+-              scorer.score(decode(first.output.output1), first.boost));
++              scorer.score((float) decode(second.output.output1), second.boost),
++              scorer.score((float) decode(first.output.output1), first.boost));
+       return (cmp != 0) ? cmp : first.input.get().compareTo(second.input.get());
+     }
+   }

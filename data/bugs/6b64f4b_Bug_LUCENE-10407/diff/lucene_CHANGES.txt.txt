@@ -1,0 +1,14 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index 956e713..49f4256 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -223,6 +223,9 @@
+ * LUCENE-10402: Prefix intervals should declare their automaton as binary, otherwise prefixes
+   containing multibyte characters will not correctly match. (Alan Woodward)
+ 
++* LUCENE-10407: Containing intervals could sometimes yield incorrect matches when wrapped
++  in a disjunction. (Alan Woodward, Dawid Weiss)
++
+ Other
+ ---------------------
+ 

@@ -1,0 +1,23 @@
+diff --git a/lucene/analysis/morfologik/src/java/org/apache/lucene/analysis/uk/UkrainianMorfologikAnalyzer.java b/lucene/analysis/morfologik/src/java/org/apache/lucene/analysis/uk/UkrainianMorfologikAnalyzer.java
+index eb29448..558239a 100644
+--- a/lucene/analysis/morfologik/src/java/org/apache/lucene/analysis/uk/UkrainianMorfologikAnalyzer.java
++++ b/lucene/analysis/morfologik/src/java/org/apache/lucene/analysis/uk/UkrainianMorfologikAnalyzer.java
+@@ -113,14 +113,11 @@
+     return defaultResources;
+   }
+ 
+-  private static class DefaultResources {
+-    final CharArraySet stopSet;
+-    final Dictionary dictionary;
++  private record DefaultResources(CharArraySet stopSet, Dictionary dictionary) {}
+ 
+-    private DefaultResources(CharArraySet stopSet, Dictionary dictionary) {
+-      this.stopSet = stopSet;
+-      this.dictionary = dictionary;
+-    }
++  /** Returns the default stopword set for this analyzer */
++  public static CharArraySet getDefaultStopwords() {
++    return CharArraySet.unmodifiableSet(getDefaultResources().stopSet);
+   }
+ 
+   /** Builds an analyzer with the default stop words. */

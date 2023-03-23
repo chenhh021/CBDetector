@@ -1,0 +1,13 @@
+diff --git a/lucene/queries/src/java/org/apache/lucene/queries/intervals/BlockIntervalsSource.java b/lucene/queries/src/java/org/apache/lucene/queries/intervals/BlockIntervalsSource.java
+index 93252af..91a5e94 100644
+--- a/lucene/queries/src/java/org/apache/lucene/queries/intervals/BlockIntervalsSource.java
++++ b/lucene/queries/src/java/org/apache/lucene/queries/intervals/BlockIntervalsSource.java
+@@ -47,7 +47,7 @@
+   }
+ 
+   private BlockIntervalsSource(List<IntervalsSource> sources) {
+-    super(flatten(sources), true);
++    super(flatten(sources));
+   }
+ 
+   @Override

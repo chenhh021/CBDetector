@@ -1,0 +1,13 @@
+diff --git a/lucene/backward-codecs/src/test/org/apache/lucene/backward_index/TestManyPointsInOldIndex.java b/lucene/backward-codecs/src/test/org/apache/lucene/backward_index/TestManyPointsInOldIndex.java
+index 18e26ad..cae0742 100644
+--- a/lucene/backward-codecs/src/test/org/apache/lucene/backward_index/TestManyPointsInOldIndex.java
++++ b/lucene/backward-codecs/src/test/org/apache/lucene/backward_index/TestManyPointsInOldIndex.java
+@@ -70,7 +70,7 @@
+     dir.setCheckIndexOnClose(false);
+ 
+     // ... because we check ourselves here:
+-    TestUtil.checkIndex(dir, false, true, null);
++    TestUtil.checkIndex(dir, false, true, true, null);
+     dir.close();
+   }
+ }

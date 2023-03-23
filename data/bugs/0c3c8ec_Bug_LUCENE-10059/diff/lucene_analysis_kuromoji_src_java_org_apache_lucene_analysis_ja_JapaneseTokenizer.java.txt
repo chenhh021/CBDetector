@@ -1,0 +1,20 @@
+diff --git a/lucene/analysis/kuromoji/src/java/org/apache/lucene/analysis/ja/JapaneseTokenizer.java b/lucene/analysis/kuromoji/src/java/org/apache/lucene/analysis/ja/JapaneseTokenizer.java
+index 6745fe0..bbc5ccf 100644
+--- a/lucene/analysis/kuromoji/src/java/org/apache/lucene/analysis/ja/JapaneseTokenizer.java
++++ b/lucene/analysis/kuromoji/src/java/org/apache/lucene/analysis/ja/JapaneseTokenizer.java
+@@ -1765,6 +1765,15 @@
+   private void backtrace(final Position endPosData, final int fromIDX) throws IOException {
+     final int endPos = endPosData.pos;
+ 
++    /**
++     * LUCENE-10059: If the endPos is the same as lastBackTracePos, we don't want to backtrace to
++     * avoid an assertion error {@link RollingCharBuffer#get(int)} when it tries to generate an
++     * empty buffer
++     */
++    if (endPos == lastBackTracePos) {
++      return;
++    }
++
+     if (VERBOSE) {
+       System.out.println(
+           "\n  backtrace: endPos="

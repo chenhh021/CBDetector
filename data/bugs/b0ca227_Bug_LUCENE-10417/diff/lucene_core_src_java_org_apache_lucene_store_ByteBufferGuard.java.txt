@@ -1,0 +1,24 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/store/ByteBufferGuard.java b/lucene/core/src/java/org/apache/lucene/store/ByteBufferGuard.java
+index 2d75597..68658d6 100644
+--- a/lucene/core/src/java/org/apache/lucene/store/ByteBufferGuard.java
++++ b/lucene/core/src/java/org/apache/lucene/store/ByteBufferGuard.java
+@@ -19,7 +19,6 @@
+ import java.io.IOException;
+ import java.nio.ByteBuffer;
+ import java.nio.FloatBuffer;
+-import java.nio.IntBuffer;
+ import java.nio.LongBuffer;
+ import java.util.concurrent.atomic.AtomicInteger;
+ 
+@@ -139,11 +138,6 @@
+     receiver.get(dst, offset, length);
+   }
+ 
+-  public void getInts(IntBuffer receiver, int[] dst, int offset, int length) {
+-    ensureValid();
+-    receiver.get(dst, offset, length);
+-  }
+-
+   public void getFloats(FloatBuffer receiver, float[] dst, int offset, int length) {
+     ensureValid();
+     receiver.get(dst, offset, length);

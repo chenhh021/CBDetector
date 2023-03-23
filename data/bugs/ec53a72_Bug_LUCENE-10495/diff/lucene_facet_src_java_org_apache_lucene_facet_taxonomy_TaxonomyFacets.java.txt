@@ -1,0 +1,13 @@
+diff --git a/lucene/facet/src/java/org/apache/lucene/facet/taxonomy/TaxonomyFacets.java b/lucene/facet/src/java/org/apache/lucene/facet/taxonomy/TaxonomyFacets.java
+index 5e80485..e95acb0 100644
+--- a/lucene/facet/src/java/org/apache/lucene/facet/taxonomy/TaxonomyFacets.java
++++ b/lucene/facet/src/java/org/apache/lucene/facet/taxonomy/TaxonomyFacets.java
+@@ -109,7 +109,7 @@
+    * @lucene.experimental
+    */
+   public boolean siblingsLoaded() {
+-    return children != null;
++    return siblings != null;
+   }
+ 
+   /**

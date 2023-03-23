@@ -1,0 +1,13 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/codecs/lucene90/Lucene90DocValuesProducer.java b/lucene/core/src/java/org/apache/lucene/codecs/lucene90/Lucene90DocValuesProducer.java
+index cb5a27a..2bb71aa 100644
+--- a/lucene/core/src/java/org/apache/lucene/codecs/lucene90/Lucene90DocValuesProducer.java
++++ b/lucene/core/src/java/org/apache/lucene/codecs/lucene90/Lucene90DocValuesProducer.java
+@@ -1454,7 +1454,7 @@
+ 
+       @Override
+       public long docValueCount() {
+-        return count;
++        return ords.docValueCount();
+       }
+ 
+       @Override

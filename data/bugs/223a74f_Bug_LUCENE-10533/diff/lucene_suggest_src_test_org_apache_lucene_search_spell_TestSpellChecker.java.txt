@@ -1,0 +1,43 @@
+diff --git a/lucene/suggest/src/test/org/apache/lucene/search/spell/TestSpellChecker.java b/lucene/suggest/src/test/org/apache/lucene/search/spell/TestSpellChecker.java
+index 8e07539..7028a02 100644
+--- a/lucene/suggest/src/test/org/apache/lucene/search/spell/TestSpellChecker.java
++++ b/lucene/suggest/src/test/org/apache/lucene/search/spell/TestSpellChecker.java
+@@ -196,6 +196,12 @@
+ 
+     {
+       String[] similar =
++          spellChecker.suggestSimilar("", 2, r, "field1", SuggestMode.SUGGEST_WHEN_NOT_IN_INDEX);
++      assertEquals(0, similar.length);
++    }
++
++    {
++      String[] similar =
+           spellChecker.suggestSimilar(
+               "eighty", 2, r, "field1", SuggestMode.SUGGEST_WHEN_NOT_IN_INDEX);
+       assertEquals(1, similar.length);
+@@ -212,6 +218,12 @@
+ 
+     {
+       String[] similar =
++          spellChecker.suggestSimilar("", 5, r, "field1", SuggestMode.SUGGEST_MORE_POPULAR);
++      assertEquals(0, similar.length);
++    }
++
++    {
++      String[] similar =
+           spellChecker.suggestSimilar("eighty", 5, r, "field1", SuggestMode.SUGGEST_MORE_POPULAR);
+       assertEquals(5, similar.length);
+       assertEquals("eight", similar[0]);
+@@ -232,6 +244,12 @@
+ 
+     {
+       String[] similar =
++          spellChecker.suggestSimilar("", 5, r, "field1", SuggestMode.SUGGEST_ALWAYS);
++      assertEquals(0, similar.length);
++    }
++
++    {
++      String[] similar =
+           spellChecker.suggestSimilar("eighty", 5, r, "field1", SuggestMode.SUGGEST_ALWAYS);
+       assertEquals(5, similar.length);
+       assertEquals("eight", similar[0]);

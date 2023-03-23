@@ -1,0 +1,13 @@
+diff --git a/lucene/queries/src/java/org/apache/lucene/queries/intervals/RepeatingIntervalsSource.java b/lucene/queries/src/java/org/apache/lucene/queries/intervals/RepeatingIntervalsSource.java
+index ea8906d..a174890 100644
+--- a/lucene/queries/src/java/org/apache/lucene/queries/intervals/RepeatingIntervalsSource.java
++++ b/lucene/queries/src/java/org/apache/lucene/queries/intervals/RepeatingIntervalsSource.java
+@@ -290,7 +290,7 @@
+       for (MatchesIterator mi : subs) {
+         MatchesIterator sub = mi.getSubMatches();
+         if (sub == null) {
+-          sub = new ConjunctionIntervalsSource.SingletonMatchesIterator(mi);
++          sub = new ConjunctionMatchesIterator.SingletonMatchesIterator(mi);
+         }
+         subMatches.add(sub);
+       }
