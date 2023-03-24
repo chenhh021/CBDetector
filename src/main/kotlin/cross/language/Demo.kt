@@ -10,6 +10,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import java.io.File
+import java.lang.Integer.max
 
 object Demo {
     fun run() {
@@ -23,7 +24,7 @@ object Demo {
         val debug = true
         for (i in bugs.indices step 2) {
             if (debug) {
-                if (i > 10) break
+//                if (i > 10) break
                 println("-------------------------------------------------------------------------------------")
                 println("${i / 2}: ${bugs[i].fullPath}")
             }
@@ -33,45 +34,50 @@ object Demo {
 
             /* distiller */
 
-//            val changes = distillerRun(left, right)
-//            for (change in changes) {
-//                println(change.changeType)
-//                println(change.label)
-//                println(change.toString())
-//                println(change.changedEntity)
-//                println(change.hashCode())
-//                println(change.rootEntity)
-//            }
+            val changes = distillerRun(left, right)
+            for (change in changes) {
+                println(change.changeType)
+                println(change.label)
+                println(change.toString())
+                println(change.changedEntity)
+                println(change.hashCode())
+                println(change.rootEntity)
+            }
 
-//            if (changes.size > 0) {
-//                count++
-//                println(count)
-//            }
+            if (changes.size > 0) {
+                count++
+                println(count)
+            }
 
             /* hungarian algorithm */
-
-            val bug = bugs[i + 1]
-
-//            val javaFileInfo = javaFiles.find {
-//                it.path == bug.tags[3]
+//
+//            val bug = bugs[i + 1]
+//
+////            val javaFileInfo = javaFiles.find {
+////                it.path == bug.tags[3]
+////            }
+//            val csharpFileInfo = csharpFiles.find {
+//                it.formattedFileName == bug.formattedFileName
 //            }
-            val csharpFileInfo = csharpFiles.find {
-                it.formattedFileName == bug.formattedFileName
-            }
-            if (csharpFileInfo != null) {
+//            if (csharpFileInfo != null) {
+//
+//                val fileParserJava = FileParserJava(bug.fullPath)
+//                val methodsJava = fileParserJava.methods.map { it.name }.distinct()
+//                val fileParserCSharp = FileParserCSharp(csharpFileInfo.fullPath)
+//                val methodsCSharp = fileParserCSharp.methods.map { it.name }.distinct()
+//
+//                if (debug) {
+//                    for (name in methodsJava) println(name)
+//                    println("##########")
+//                    println(csharpFileInfo.fullPath)
+//                    for (name in methodsCSharp) println(name)
+//
+//                    val size = max(methodsJava.size, methodsCSharp.size)
+//
+//                }
+//
+//            }
 
-                val fileParserJava = FileParserJava(bug.fullPath)
-                val methodsJava = fileParserJava.methods.map { it.name }.distinct()
-                val fileParserCSharp = FileParserCSharp(csharpFileInfo.fullPath)
-                val methodsCSharp = fileParserCSharp.methods.map { it.name }.distinct()
-
-                if (debug) {
-                    for (name in methodsJava) println(name)
-                    println("##########")
-                    println(csharpFileInfo.fullPath)
-                    for (name in methodsCSharp) println(name)
-                }
-            }
 
         }
 //        println(bugs.size)
