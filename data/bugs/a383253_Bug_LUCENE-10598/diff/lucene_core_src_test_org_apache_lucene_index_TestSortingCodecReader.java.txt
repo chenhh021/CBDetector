@@ -1,0 +1,12 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/index/TestSortingCodecReader.java b/lucene/core/src/test/org/apache/lucene/index/TestSortingCodecReader.java
+index 09a8e9e..42a898d 100644
+--- a/lucene/core/src/test/org/apache/lucene/index/TestSortingCodecReader.java
++++ b/lucene/core/src/test/org/apache/lucene/index/TestSortingCodecReader.java
+@@ -230,6 +230,7 @@
+               assertEquals(
+                   new BytesRef(ids.longValue() + ""),
+                   sorted_set_dv.lookupOrd(sorted_set_dv.nextOrd()));
++              assertEquals(1, sorted_set_dv.docValueCount());
+               assertEquals(1, sorted_numeric_dv.docValueCount());
+               assertEquals(ids.longValue(), sorted_numeric_dv.nextValue());
+ 

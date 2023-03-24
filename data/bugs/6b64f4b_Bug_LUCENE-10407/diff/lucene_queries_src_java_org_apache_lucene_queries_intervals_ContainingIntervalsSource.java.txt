@@ -1,0 +1,16 @@
+diff --git a/lucene/queries/src/java/org/apache/lucene/queries/intervals/ContainingIntervalsSource.java b/lucene/queries/src/java/org/apache/lucene/queries/intervals/ContainingIntervalsSource.java
+index 900ecce..5987dc3 100644
+--- a/lucene/queries/src/java/org/apache/lucene/queries/intervals/ContainingIntervalsSource.java
++++ b/lucene/queries/src/java/org/apache/lucene/queries/intervals/ContainingIntervalsSource.java
+@@ -51,8 +51,10 @@
+         }
+         while (a.nextInterval() != IntervalIterator.NO_MORE_INTERVALS) {
+           while (b.start() < a.start() && b.end() < a.end()) {
+-            if (b.nextInterval() == IntervalIterator.NO_MORE_INTERVALS)
++            if (b.nextInterval() == IntervalIterator.NO_MORE_INTERVALS) {
++              bpos = false;
+               return IntervalIterator.NO_MORE_INTERVALS;
++            }
+           }
+           if (a.start() <= b.start() && a.end() >= b.end()) {
+             return a.start();

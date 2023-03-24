@@ -1,0 +1,13 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index 0e0dc71..53c1ac5 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -110,6 +110,8 @@
+ 
+ * LUCENE-10600: SortedSetDocValues#docValueCount should be an int, not long (Lu Xugang)
+ 
++* LUCENE-10611: Fix Heap Error in HnswGraphSearcher (Kaival Parikh)
++
+ Other
+ ---------------------
+ 

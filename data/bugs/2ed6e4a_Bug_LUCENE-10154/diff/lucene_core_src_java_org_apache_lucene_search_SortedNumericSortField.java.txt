@@ -1,0 +1,88 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/search/SortedNumericSortField.java b/lucene/core/src/java/org/apache/lucene/search/SortedNumericSortField.java
+index 60ddaa9..e01461e 100644
+--- a/lucene/core/src/java/org/apache/lucene/search/SortedNumericSortField.java
++++ b/lucene/core/src/java/org/apache/lucene/search/SortedNumericSortField.java
+@@ -22,6 +22,7 @@
+ import org.apache.lucene.index.LeafReader;
+ import org.apache.lucene.index.LeafReaderContext;
+ import org.apache.lucene.index.NumericDocValues;
++import org.apache.lucene.index.PointValues;
+ import org.apache.lucene.index.SortFieldProvider;
+ import org.apache.lucene.index.SortedNumericDocValues;
+ import org.apache.lucene.search.comparators.DoubleComparator;
+@@ -257,6 +258,18 @@
+                     return SortedNumericSelector.wrap(
+                         DocValues.getSortedNumeric(context.reader(), field), selector, type);
+                   }
++                  // we can use sort optimization with points if selector is MIN or MAX,
++                  // because we can still build successful iterator over points in this case.
++                  @Override
++                  protected PointValues getPointValues(LeafReaderContext context, String field)
++                      throws IOException {
++                    if (selector == SortedNumericSelector.Type.MAX
++                        || selector == SortedNumericSelector.Type.MIN) {
++                      return super.getPointValues(context, field);
++                    } else {
++                      return null;
++                    }
++                  }
+                 };
+               }
+             };
+@@ -274,6 +287,18 @@
+                     return SortedNumericSelector.wrap(
+                         DocValues.getSortedNumeric(context.reader(), field), selector, type);
+                   }
++                  // we can use sort optimization with points if selector is MIN or MAX,
++                  // because we can still build successful iterator over points in this case.
++                  @Override
++                  protected PointValues getPointValues(LeafReaderContext context, String field)
++                      throws IOException {
++                    if (selector == SortedNumericSelector.Type.MAX
++                        || selector == SortedNumericSelector.Type.MIN) {
++                      return super.getPointValues(context, field);
++                    } else {
++                      return null;
++                    }
++                  }
+                 };
+               }
+             };
+@@ -291,6 +316,18 @@
+                     return SortedNumericSelector.wrap(
+                         DocValues.getSortedNumeric(context.reader(), field), selector, type);
+                   }
++                  // we can use sort optimization with points if selector is MIN or MAX,
++                  // because we can still build successful iterator over points in this case.
++                  @Override
++                  protected PointValues getPointValues(LeafReaderContext context, String field)
++                      throws IOException {
++                    if (selector == SortedNumericSelector.Type.MAX
++                        || selector == SortedNumericSelector.Type.MIN) {
++                      return super.getPointValues(context, field);
++                    } else {
++                      return null;
++                    }
++                  }
+                 };
+               }
+             };
+@@ -308,6 +345,18 @@
+                     return SortedNumericSelector.wrap(
+                         DocValues.getSortedNumeric(context.reader(), field), selector, type);
+                   }
++                  // we can use sort optimization with points if selector is MIN or MAX,
++                  // because we can still build successful iterator over points in this case.
++                  @Override
++                  protected PointValues getPointValues(LeafReaderContext context, String field)
++                      throws IOException {
++                    if (selector == SortedNumericSelector.Type.MAX
++                        || selector == SortedNumericSelector.Type.MIN) {
++                      return super.getPointValues(context, field);
++                    } else {
++                      return null;
++                    }
++                  }
+                 };
+               }
+             };

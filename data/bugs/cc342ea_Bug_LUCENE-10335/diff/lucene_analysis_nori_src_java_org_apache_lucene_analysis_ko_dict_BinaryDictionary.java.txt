@@ -1,0 +1,30 @@
+diff --git a/lucene/analysis/nori/src/java/org/apache/lucene/analysis/ko/dict/BinaryDictionary.java b/lucene/analysis/nori/src/java/org/apache/lucene/analysis/ko/dict/BinaryDictionary.java
+index 000786f..f002fc3 100644
+--- a/lucene/analysis/nori/src/java/org/apache/lucene/analysis/ko/dict/BinaryDictionary.java
++++ b/lucene/analysis/nori/src/java/org/apache/lucene/analysis/ko/dict/BinaryDictionary.java
+@@ -74,8 +74,11 @@
+         throw new IllegalArgumentException(
+             "resourcePath must be supplied with FILE resource scheme");
+       }
+-      this.resourcePath = getClass().getName().replace('.', '/');
++      this.resourcePath = getClass().getSimpleName();
+     } else {
++      if (resourceScheme == ResourceScheme.CLASSPATH && !resourcePath.startsWith("/")) {
++        resourcePath = "/".concat(resourcePath);
++      }
+       this.resourcePath = resourcePath;
+     }
+     InputStream mapIS = null, dictIS = null, posIS = null;
+@@ -178,11 +181,7 @@
+   }
+ 
+   private static InputStream getClassResource(String path) throws IOException {
+-    final InputStream is = BinaryDictionary.class.getClassLoader().getResourceAsStream(path);
+-    if (is == null) {
+-      throw new FileNotFoundException("Not in classpath: " + path);
+-    }
+-    return is;
++    return IOUtils.requireResourceNonNull(BinaryDictionary.class.getResourceAsStream(path), path);
+   }
+ 
+   public void lookupWordIds(int sourceId, IntsRef ref) {

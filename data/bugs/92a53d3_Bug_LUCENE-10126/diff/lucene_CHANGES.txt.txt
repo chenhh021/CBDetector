@@ -1,0 +1,14 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index c0bce20..e1072cd 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -436,6 +436,9 @@
+ 
+ * LUCENE-10070 Skip deleted docs when accumulating facet counts for all docs. (Ankur Goel, Greg Miller)
+ 
++* LUCENE-10126: Sort optimization with a chunked bulk scorer
++  can wrongly skip documents (Nhat Nguyen, Mayya Sharipova)
++
+ Build
+ ---------------------
+ 

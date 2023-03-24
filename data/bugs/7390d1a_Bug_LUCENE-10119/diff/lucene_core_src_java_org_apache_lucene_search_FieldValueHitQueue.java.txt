@@ -1,0 +1,16 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/search/FieldValueHitQueue.java b/lucene/core/src/java/org/apache/lucene/search/FieldValueHitQueue.java
+index b445403..60596f3 100644
+--- a/lucene/core/src/java/org/apache/lucene/search/FieldValueHitQueue.java
++++ b/lucene/core/src/java/org/apache/lucene/search/FieldValueHitQueue.java
+@@ -136,11 +136,6 @@
+       reverseMul[i] = field.reverse ? -1 : 1;
+       comparators[i] = field.getComparator(size, i);
+     }
+-    if (numComparators == 1) {
+-      // inform a comparator that sort is based on this single field
+-      // to enable some optimizations for skipping over non-competitive documents
+-      comparators[0].setSingleSort();
+-    }
+   }
+ 
+   /**

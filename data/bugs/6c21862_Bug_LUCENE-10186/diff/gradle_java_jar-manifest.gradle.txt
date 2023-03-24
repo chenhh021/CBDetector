@@ -1,0 +1,16 @@
+diff --git a/gradle/java/jar-manifest.gradle b/gradle/java/jar-manifest.gradle
+index d5adeb0..bb45405 100644
+--- a/gradle/java/jar-manifest.gradle
++++ b/gradle/java/jar-manifest.gradle
+@@ -24,10 +24,8 @@
+     def implementationTitle = "org.apache.lucene"
+     def legaleseDir = project(":").projectDir
+ 
+-    // Apply the manifest to any JAR or WAR file created by any project,
+-    // excluding those explicitly listed.
++    // Apply the manifest to any JAR or WAR file created by any project.
+     tasks.withType(Jar)
+-      .matching { t -> !["sourcesJar", "javadocJar"].contains(t.name) }
+       .configureEach { task ->
+           // Compute git status once on the root project prior to assembling manifest.
+           dependsOn ":gitStatus"

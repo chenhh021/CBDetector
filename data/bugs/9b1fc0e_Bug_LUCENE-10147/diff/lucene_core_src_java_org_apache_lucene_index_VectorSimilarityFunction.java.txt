@@ -1,0 +1,42 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/index/VectorSimilarityFunction.java b/lucene/core/src/java/org/apache/lucene/index/VectorSimilarityFunction.java
+index 575a843..8905d49 100644
+--- a/lucene/core/src/java/org/apache/lucene/index/VectorSimilarityFunction.java
++++ b/lucene/core/src/java/org/apache/lucene/index/VectorSimilarityFunction.java
+@@ -32,6 +32,11 @@
+     public float compare(float[] v1, float[] v2) {
+       return squareDistance(v1, v2);
+     }
++
++    @Override
++    public float convertToScore(float similarity) {
++      return 1 / (1 + similarity);
++    }
+   },
+ 
+   /** Dot product */
+@@ -40,6 +45,11 @@
+     public float compare(float[] v1, float[] v2) {
+       return dotProduct(v1, v2);
+     }
++
++    @Override
++    public float convertToScore(float similarity) {
++      return (1 + similarity) / 2;
++    }
+   };
+ 
+   /**
+@@ -65,4 +75,13 @@
+    * @return the value of the similarity function applied to the two vectors
+    */
+   public abstract float compare(float[] v1, float[] v2);
++
++  /**
++   * Converts similarity scores used (may be negative, reversed, etc) into document scores, which
++   * must be positive, with higher scores representing better matches.
++   *
++   * @param similarity the raw internal score as returned by {@link #compare(float[], float[])}.
++   * @return normalizedSimilarity
++   */
++  public abstract float convertToScore(float similarity);
+ }

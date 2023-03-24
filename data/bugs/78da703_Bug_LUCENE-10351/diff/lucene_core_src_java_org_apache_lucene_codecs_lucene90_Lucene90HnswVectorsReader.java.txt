@@ -1,0 +1,14 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/codecs/lucene90/Lucene90HnswVectorsReader.java b/lucene/core/src/java/org/apache/lucene/codecs/lucene90/Lucene90HnswVectorsReader.java
+index c3e5e0a..b0ac8a9 100644
+--- a/lucene/core/src/java/org/apache/lucene/codecs/lucene90/Lucene90HnswVectorsReader.java
++++ b/lucene/core/src/java/org/apache/lucene/codecs/lucene90/Lucene90HnswVectorsReader.java
+@@ -239,6 +239,9 @@
+     if (fieldEntry == null || fieldEntry.dimension == 0) {
+       return null;
+     }
++    if (fieldEntry.size() == 0) {
++      return new TopDocs(new TotalHits(0, TotalHits.Relation.EQUAL_TO), new ScoreDoc[0]);
++    }
+ 
+     // bound k by total number of vectors to prevent oversizing data structures
+     k = Math.min(k, fieldEntry.size());

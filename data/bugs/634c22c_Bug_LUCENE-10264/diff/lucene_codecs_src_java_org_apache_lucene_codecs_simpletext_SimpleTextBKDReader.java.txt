@@ -1,0 +1,35 @@
+diff --git a/lucene/codecs/src/java/org/apache/lucene/codecs/simpletext/SimpleTextBKDReader.java b/lucene/codecs/src/java/org/apache/lucene/codecs/simpletext/SimpleTextBKDReader.java
+index c5d5a29..6b98949 100644
+--- a/lucene/codecs/src/java/org/apache/lucene/codecs/simpletext/SimpleTextBKDReader.java
++++ b/lucene/codecs/src/java/org/apache/lucene/codecs/simpletext/SimpleTextBKDReader.java
+@@ -77,7 +77,7 @@
+ 
+   @Override
+   public PointTree getPointTree() {
+-    return new SimpleTextPointTree(1, 1, minPackedValue, maxPackedValue);
++    return new SimpleTextPointTree(in.clone(), 1, 1, minPackedValue, maxPackedValue);
+   }
+ 
+   private class SimpleTextPointTree implements PointTree {
+@@ -94,8 +94,11 @@
+     // holds the splitDim for each level:
+     private final int[] splitDims;
+ 
++    private final IndexInput in;
++
+     private SimpleTextPointTree(
+-        int nodeID, int level, byte[] minPackedValue, byte[] maxPackedValue) {
++        IndexInput in, int nodeID, int level, byte[] minPackedValue, byte[] maxPackedValue) {
++      this.in = in;
+       this.scratchDocIDs = new int[config.maxPointsInLeafNode];
+       this.scratchPackedValue = new byte[config.packedBytesLength];
+       this.nodeID = nodeID;
+@@ -121,7 +124,7 @@
+     @Override
+     public PointTree clone() {
+       SimpleTextPointTree index =
+-          new SimpleTextPointTree(nodeID, level, minPackedValue, maxPackedValue);
++          new SimpleTextPointTree(in.clone(), nodeID, level, minPackedValue, maxPackedValue);
+       if (isLeafNode() == false) {
+         // copy node data
+         index.splitDims[level] = splitDims[level];

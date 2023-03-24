@@ -1,0 +1,13 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index ed6f979..c5613ba 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -102,7 +102,7 @@
+ 
+ Bug Fixes
+ ---------------------
+-(No changes)
++* LUCENE-10663: Fix KnnVectorQuery explain with multiple segments. (Shiming Li)
+ 
+ Other
+ ---------------------

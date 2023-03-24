@@ -1,0 +1,24 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/index/SortedSetDocValuesWriter.java b/lucene/core/src/java/org/apache/lucene/index/SortedSetDocValuesWriter.java
+index eaba6e5..6ebe69c 100644
+--- a/lucene/core/src/java/org/apache/lucene/index/SortedSetDocValuesWriter.java
++++ b/lucene/core/src/java/org/apache/lucene/index/SortedSetDocValuesWriter.java
+@@ -311,7 +311,7 @@
+     }
+ 
+     @Override
+-    public long docValueCount() {
++    public int docValueCount() {
+       return ordCount;
+     }
+ 
+@@ -397,8 +397,8 @@
+     }
+ 
+     @Override
+-    public long docValueCount() {
+-      return ords.ords.size();
++    public int docValueCount() {
++      return (int) ords.ords.size();
+     }
+ 
+     @Override

@@ -1,0 +1,14 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index b5d62ed..52fe6ca 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -98,6 +98,9 @@
+ * LUCENE-10440: TaxonomyFacets and FloatTaxonomyFacets have been deprecated and are no longer
+   supported extension points for user-created faceting implementations. (Greg Miller)
+ 
++* LUCENE-10431: MultiTermQuery.setRewriteMethod() has been deprecated, and constructor
++  parameters for the various implementations added. (Alan Woodward)
++
+ New Features
+ ---------------------
+ 

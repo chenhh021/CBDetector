@@ -1,0 +1,13 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index b0ec212..e8d78ef 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -164,6 +164,8 @@
+ * LUCENE-10530: Avoid floating point precision test case bug in TestTaxonomyFacetAssociations.
+   (Greg Miller)
+ 
++* LUCENE-10552: KnnVectorQuery has incorrect equals/ hashCode. (Lu Xugang)
++
+ Build
+ ---------------------
+ 

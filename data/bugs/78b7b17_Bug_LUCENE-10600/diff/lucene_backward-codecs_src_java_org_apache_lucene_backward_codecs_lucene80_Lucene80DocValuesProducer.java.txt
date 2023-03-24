@@ -1,0 +1,67 @@
+diff --git a/lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene80/Lucene80DocValuesProducer.java b/lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene80/Lucene80DocValuesProducer.java
+index 60c6b36..28fda7f 100644
+--- a/lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene80/Lucene80DocValuesProducer.java
++++ b/lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene80/Lucene80DocValuesProducer.java
+@@ -1561,7 +1561,7 @@
+ 
+         int doc = -1;
+         long start, end;
+-        long count;
++        int count;
+ 
+         @Override
+         public int nextDoc() throws IOException {
+@@ -1585,7 +1585,7 @@
+           }
+           start = addresses.get(target);
+           end = addresses.get(target + 1L);
+-          count = (end - start);
++          count = (int) (end - start);
+           return doc = target;
+         }
+ 
+@@ -1593,7 +1593,7 @@
+         public boolean advanceExact(int target) throws IOException {
+           start = addresses.get(target);
+           end = addresses.get(target + 1L);
+-          count = (end - start);
++          count = (int) (end - start);
+           doc = target;
+           return true;
+         }
+@@ -1607,7 +1607,7 @@
+         }
+ 
+         @Override
+-        public long docValueCount() {
++        public int docValueCount() {
+           return count;
+         }
+       };
+@@ -1626,7 +1626,7 @@
+         boolean set;
+         long start;
+         long end = 0;
+-        long count;
++        int count;
+ 
+         @Override
+         public int nextDoc() throws IOException {
+@@ -1661,7 +1661,7 @@
+             final int index = disi.index();
+             start = addresses.get(index);
+             end = addresses.get(index + 1L);
+-            count = end - start;
++            count = (int) (end - start);
+             set = true;
+             return true;
+           }
+@@ -1680,7 +1680,7 @@
+         }
+ 
+         @Override
+-        public long docValueCount() {
++        public int docValueCount() {
+           set();
+           return count;
+         }

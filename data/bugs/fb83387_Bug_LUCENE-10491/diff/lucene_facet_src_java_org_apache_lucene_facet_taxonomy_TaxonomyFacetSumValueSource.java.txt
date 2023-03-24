@@ -1,0 +1,13 @@
+diff --git a/lucene/facet/src/java/org/apache/lucene/facet/taxonomy/TaxonomyFacetSumValueSource.java b/lucene/facet/src/java/org/apache/lucene/facet/taxonomy/TaxonomyFacetSumValueSource.java
+index 976eb9f..95c9301 100644
+--- a/lucene/facet/src/java/org/apache/lucene/facet/taxonomy/TaxonomyFacetSumValueSource.java
++++ b/lucene/facet/src/java/org/apache/lucene/facet/taxonomy/TaxonomyFacetSumValueSource.java
+@@ -75,7 +75,7 @@
+ 
+       @Override
+       public boolean advanceExact(int doc) throws IOException {
+-        index++;
++        index = doc;
+         return true;
+       }
+     };

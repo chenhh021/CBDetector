@@ -1,0 +1,12 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/index/TestCheckIndex.java b/lucene/core/src/test/org/apache/lucene/index/TestCheckIndex.java
+index 93658d6..c9ffbab 100644
+--- a/lucene/core/src/test/org/apache/lucene/index/TestCheckIndex.java
++++ b/lucene/core/src/test/org/apache/lucene/index/TestCheckIndex.java
+@@ -124,6 +124,7 @@
+         tombstone.add(new NumericDocValuesField("soft_delete", 1));
+         w.softUpdateDocument(
+             new Term("id", "1"), tombstone, new NumericDocValuesField("soft_delete", 1));
++        w.forceMerge(1);
+       }
+ 
+       ByteArrayOutputStream output = new ByteArrayOutputStream();

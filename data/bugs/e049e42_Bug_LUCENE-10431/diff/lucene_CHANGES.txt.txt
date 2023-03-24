@@ -1,0 +1,13 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index 52fe6ca..c072829 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -20,6 +20,8 @@
+ * LUCENE-10440: TaxonomyFacets and FloatTaxonomyFacets have been made pkg-private and only serve
+   as internal implementation details of taxonomy-faceting. (Greg Miller)
+ 
++* LUCENE-10431: MultiTermQuery.setRewriteMethod() has been removed. (Alan Woodward)
++
+ New Features
+ ---------------------
+ 

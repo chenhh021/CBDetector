@@ -1,0 +1,15 @@
+diff --git a/lucene/suggest/src/test/org/apache/lucene/search/spell/TestPlainTextDictionary.java b/lucene/suggest/src/test/org/apache/lucene/search/spell/TestPlainTextDictionary.java
+index 592bb09..2c9ab3f 100644
+--- a/lucene/suggest/src/test/org/apache/lucene/search/spell/TestPlainTextDictionary.java
++++ b/lucene/suggest/src/test/org/apache/lucene/search/spell/TestPlainTextDictionary.java
+@@ -31,7 +31,9 @@
+     Directory ramDir = newDirectory();
+     SpellChecker spellChecker = new SpellChecker(ramDir);
+     spellChecker.indexDictionary(ptd, newIndexWriterConfig(null), false);
+-    String[] similar = spellChecker.suggestSimilar("treeword", 2);
++    String[] similar = spellChecker.suggestSimilar("", 2);
++    assertEquals(0, similar.length);
++    similar = spellChecker.suggestSimilar("treeword", 2);
+     assertEquals(2, similar.length);
+     assertEquals(similar[0], "threeword");
+     assertEquals(similar[1], "oneword");

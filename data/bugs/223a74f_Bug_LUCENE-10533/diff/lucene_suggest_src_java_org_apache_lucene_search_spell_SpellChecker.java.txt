@@ -1,0 +1,23 @@
+diff --git a/lucene/suggest/src/java/org/apache/lucene/search/spell/SpellChecker.java b/lucene/suggest/src/java/org/apache/lucene/search/spell/SpellChecker.java
+index 1aee0ab..be0ad31 100644
+--- a/lucene/suggest/src/java/org/apache/lucene/search/spell/SpellChecker.java
++++ b/lucene/suggest/src/java/org/apache/lucene/search/spell/SpellChecker.java
+@@ -426,6 +426,9 @@
+    */
+   private static String[] formGrams(String text, int ng) {
+     int len = text.length();
++    if (len < ng) {
++      return new String[] {};
++    }
+     String[] res = new String[len - ng + 1];
+     for (int i = 0; i < len - ng + 1; i++) {
+       res[i] = text.substring(i, i + ng);
+@@ -559,7 +562,7 @@
+     if (l == 5) {
+       return 3;
+     }
+-    return 2;
++    return Math.min(l, 2);
+   }
+ 
+   private static Document createDocument(String text, int ng1, int ng2) {

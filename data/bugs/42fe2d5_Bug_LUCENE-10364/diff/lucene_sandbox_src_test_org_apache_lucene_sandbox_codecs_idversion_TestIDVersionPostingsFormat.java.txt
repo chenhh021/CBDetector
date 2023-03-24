@@ -1,0 +1,21 @@
+diff --git a/lucene/sandbox/src/test/org/apache/lucene/sandbox/codecs/idversion/TestIDVersionPostingsFormat.java b/lucene/sandbox/src/test/org/apache/lucene/sandbox/codecs/idversion/TestIDVersionPostingsFormat.java
+index 68c76b7..9948349 100644
+--- a/lucene/sandbox/src/test/org/apache/lucene/sandbox/codecs/idversion/TestIDVersionPostingsFormat.java
++++ b/lucene/sandbox/src/test/org/apache/lucene/sandbox/codecs/idversion/TestIDVersionPostingsFormat.java
+@@ -23,6 +23,7 @@
+ import java.util.List;
+ import java.util.Locale;
+ import java.util.Map;
++import java.util.Objects;
+ import java.util.Set;
+ import java.util.concurrent.ConcurrentHashMap;
+ import java.util.concurrent.CountDownLatch;
+@@ -824,7 +825,7 @@
+                     }
+ 
+                     boolean doIndex;
+-                    if (currentVersion == missingValue) {
++                    if (Objects.equals(currentVersion, missingValue)) {
+                       if (VERBOSE) {
+                         System.out.println(
+                             Thread.currentThread().getName() + ":   id not in RT cache");

@@ -1,0 +1,13 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/util/packed/TestPackedInts.java b/lucene/core/src/test/org/apache/lucene/util/packed/TestPackedInts.java
+index d190202..bb85747 100644
+--- a/lucene/core/src/test/org/apache/lucene/util/packed/TestPackedInts.java
++++ b/lucene/core/src/test/org/apache/lucene/util/packed/TestPackedInts.java
+@@ -703,7 +703,7 @@
+     }
+ 
+     // test ramBytesUsed
+-    assertEquals(RamUsageTester.ramUsed(writer), writer.ramBytesUsed(), 8);
++    assertEquals(RamUsageTester.ramUsed(writer), writer.ramBytesUsed(), 8.d);
+ 
+     // test copy
+     PagedGrowableWriter copy =

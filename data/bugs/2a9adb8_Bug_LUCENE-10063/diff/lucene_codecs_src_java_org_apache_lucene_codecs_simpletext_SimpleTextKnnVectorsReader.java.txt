@@ -1,0 +1,14 @@
+diff --git a/lucene/codecs/src/java/org/apache/lucene/codecs/simpletext/SimpleTextKnnVectorsReader.java b/lucene/codecs/src/java/org/apache/lucene/codecs/simpletext/SimpleTextKnnVectorsReader.java
+index 852c1f1..4ef585e 100644
+--- a/lucene/codecs/src/java/org/apache/lucene/codecs/simpletext/SimpleTextKnnVectorsReader.java
++++ b/lucene/codecs/src/java/org/apache/lucene/codecs/simpletext/SimpleTextKnnVectorsReader.java
+@@ -160,9 +160,6 @@
+       }
+       float[] vector = values.vectorValue();
+       float score = vectorSimilarity.convertToScore(vectorSimilarity.compare(vector, target));
+-      if (vectorSimilarity.reversed) {
+-        score = 1 / (score + 1);
+-      }
+       topK.insertWithOverflow(new ScoreDoc(doc, score));
+     }
+     ScoreDoc[] topScoreDocs = new ScoreDoc[topK.size()];

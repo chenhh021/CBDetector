@@ -1,0 +1,17 @@
+diff --git a/lucene/spatial3d/src/java/org/apache/lucene/spatial3d/geom/GeoNorthRectangle.java b/lucene/spatial3d/src/java/org/apache/lucene/spatial3d/geom/GeoNorthRectangle.java
+index a8ee7ed..20e93fb 100644
+--- a/lucene/spatial3d/src/java/org/apache/lucene/spatial3d/geom/GeoNorthRectangle.java
++++ b/lucene/spatial3d/src/java/org/apache/lucene/spatial3d/geom/GeoNorthRectangle.java
+@@ -124,9 +124,9 @@
+     this.centerPoint =
+         new GeoPoint(planetModel, sinMiddleLat, sinMiddleLon, cosMiddleLat, cosMiddleLon);
+ 
+-    this.bottomPlane = new SidedPlane(centerPoint, planetModel, sinBottomLat);
+-    this.leftPlane = new SidedPlane(centerPoint, cosLeftLon, sinLeftLon);
+-    this.rightPlane = new SidedPlane(centerPoint, cosRightLon, sinRightLon);
++    this.bottomPlane = new SidedPlane(planetModel.NORTH_POLE, planetModel, sinBottomLat);
++    this.leftPlane = new SidedPlane(LRHC, cosLeftLon, sinLeftLon);
++    this.rightPlane = new SidedPlane(LLHC, cosRightLon, sinRightLon);
+ 
+     assert (bottomPlane.isWithin(centerPoint));
+     assert (leftPlane.isWithin(centerPoint));

@@ -1,0 +1,65 @@
+diff --git a/lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene80/Lucene80DocValuesProducer.java b/lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene80/Lucene80DocValuesProducer.java
+index 32a898d..60c6b36 100644
+--- a/lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene80/Lucene80DocValuesProducer.java
++++ b/lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene80/Lucene80DocValuesProducer.java
+@@ -1560,8 +1560,8 @@
+       return new BaseSortedSetDocValues(entry, data) {
+ 
+         int doc = -1;
+-        long start;
+-        long end;
++        long start, end;
++        long count;
+ 
+         @Override
+         public int nextDoc() throws IOException {
+@@ -1585,6 +1585,7 @@
+           }
+           start = addresses.get(target);
+           end = addresses.get(target + 1L);
++          count = (end - start);
+           return doc = target;
+         }
+ 
+@@ -1592,6 +1593,7 @@
+         public boolean advanceExact(int target) throws IOException {
+           start = addresses.get(target);
+           end = addresses.get(target + 1L);
++          count = (end - start);
+           doc = target;
+           return true;
+         }
+@@ -1606,7 +1608,7 @@
+ 
+         @Override
+         public long docValueCount() {
+-          return end - start;
++          return count;
+         }
+       };
+     } else {
+@@ -1624,6 +1626,7 @@
+         boolean set;
+         long start;
+         long end = 0;
++        long count;
+ 
+         @Override
+         public int nextDoc() throws IOException {
+@@ -1658,6 +1661,7 @@
+             final int index = disi.index();
+             start = addresses.get(index);
+             end = addresses.get(index + 1L);
++            count = end - start;
+             set = true;
+             return true;
+           }
+@@ -1678,7 +1682,7 @@
+         @Override
+         public long docValueCount() {
+           set();
+-          return end - start;
++          return count;
+         }
+       };
+     }

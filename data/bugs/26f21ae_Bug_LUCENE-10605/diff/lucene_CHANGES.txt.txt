@@ -1,0 +1,13 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index 59969a9..a87e12e 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -99,6 +99,8 @@
+ 
+ * LUCENE-10563: Fix failure to tessellate complex polygon (Craig Taverner)
+ 
++* LUCENE-10605: Fix error in 32bit jvm object alignment gap calculation (Sun Wuqiang)
++
+ Other
+ ---------------------
+ 

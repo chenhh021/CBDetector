@@ -1,0 +1,14 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index ed58c9d..949d2b7 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -484,6 +484,9 @@
+ 
+ * LUCENE-10060: Ensure DrillSidewaysQuery instances never get cached. (Greg Miller, Zachary Chen)
+ 
++* LUCENE-10081: KoreanTokenizer should check the max backtrace gap on whitespaces.
++  (Jim Ferenczi)
++
+ Other
+ ---------------------
+ (No changes)

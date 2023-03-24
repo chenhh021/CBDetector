@@ -1,0 +1,24 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/index/TermsHashPerField.java b/lucene/core/src/java/org/apache/lucene/index/TermsHashPerField.java
+index 1067bc7..b812003 100644
+--- a/lucene/core/src/java/org/apache/lucene/index/TermsHashPerField.java
++++ b/lucene/core/src/java/org/apache/lucene/index/TermsHashPerField.java
+@@ -140,11 +140,16 @@
+     }
+   }
+ 
++  /**
++   * Called when we first encounter a new term. We must allocate slies to store the postings (vInt
++   * compressed doc/freq/prox), and also the int pointers to where (in our ByteBlockPool storage)
++   * the postings for this term begin.
++   */
+   private void initStreamSlices(int termID, int docID) throws IOException {
+     // Init stream slices
+-    // TODO: figure out why this is 2*streamCount here. streamCount should be enough?
+-    if ((2 * streamCount) + intPool.intUpto > IntBlockPool.INT_BLOCK_SIZE) {
+-      // can we fit all the streams in the current buffer?
++    if (streamCount + intPool.intUpto > IntBlockPool.INT_BLOCK_SIZE) {
++      // not enough space remaining in this buffer -- jump to next buffer and lose this remaining
++      // piece
+       intPool.nextBuffer();
+     }
+ 

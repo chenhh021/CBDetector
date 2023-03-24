@@ -1,0 +1,13 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/search/TestRegexpRandom2.java b/lucene/core/src/test/org/apache/lucene/search/TestRegexpRandom2.java
+index d856d24..47ef505 100644
+--- a/lucene/core/src/test/org/apache/lucene/search/TestRegexpRandom2.java
++++ b/lucene/core/src/test/org/apache/lucene/search/TestRegexpRandom2.java
+@@ -110,7 +110,7 @@
+     private final Automaton automaton;
+ 
+     DumbRegexpQuery(Term term, int flags) {
+-      super(term.field());
++      super(term.field(), MultiTermQuery.CONSTANT_SCORE_REWRITE);
+       RegExp re = new RegExp(term.text(), flags);
+       automaton =
+           Operations.determinize(re.toAutomaton(), Operations.DEFAULT_DETERMINIZE_WORK_LIMIT);

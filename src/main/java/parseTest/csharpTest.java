@@ -1,18 +1,18 @@
 package parseTest;
 
-import parsers.csharp.CSharpLexer;
-import parsers.csharp.CSharpParser;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import parsers.csharp.CSharpLexer;
+import parsers.csharp.CSharpParser;
 
 import java.io.IOException;
 
 public class csharpTest {
     public static void main(String[] args) throws IOException {
-        CharStream input = CharStreams.fromFileName("D:\\chh\\SE\\projects\\CLCDSA\\CLCDSA\\CLCDSA_Code\\src\\testcs.cs");
+        CharStream input = CharStreams.fromFileName("D:\\code\\java-csharp-ast\\src\\lucenenet-master\\src\\Lucene.Net\\Analysis\\Analyzer.cs");
         CSharpLexer lexer = new CSharpLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         CSharpParser parser = new CSharpParser(tokens);

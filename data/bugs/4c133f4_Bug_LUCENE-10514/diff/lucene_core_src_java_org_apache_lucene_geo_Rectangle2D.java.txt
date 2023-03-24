@@ -1,0 +1,22 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/geo/Rectangle2D.java b/lucene/core/src/java/org/apache/lucene/geo/Rectangle2D.java
+index 557e35c..73e9ef6 100644
+--- a/lucene/core/src/java/org/apache/lucene/geo/Rectangle2D.java
++++ b/lucene/core/src/java/org/apache/lucene/geo/Rectangle2D.java
+@@ -164,10 +164,13 @@
+       boolean ab,
+       double bX,
+       double bY) {
+-    if (ab == true
+-        && Component2D.disjoint(this.minX, this.maxX, this.minY, this.maxY, minX, maxX, minY, maxY)
+-            == false
+-        && edgesIntersect(aX, aY, bX, bY)) {
++    if (Component2D.disjoint(this.minX, this.maxX, this.minY, this.maxY, minX, maxX, minY, maxY)) {
++      return WithinRelation.DISJOINT;
++    }
++    if (contains(aX, aY) || contains(bX, bY)) {
++      return WithinRelation.NOTWITHIN;
++    }
++    if (ab == true && edgesIntersect(aX, aY, bX, bY)) {
+       return WithinRelation.NOTWITHIN;
+     }
+     return WithinRelation.DISJOINT;

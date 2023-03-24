@@ -1,0 +1,24 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index d5a4c14..b08b45d 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -40,8 +40,7 @@
+ Bug Fixes
+ ---------------------
+ 
+-* LUCENE-10466: Ensure IndexSortSortedNumericDocValuesRangeQuery handles sort field 
+-  types besides LONG (Andriy Redko)
++(No changes)
+ 
+ Other
+ ---------------------
+@@ -100,6 +99,9 @@
+ * LUCENE-10491: A correctness bug in the way scores are provided within TaxonomyFacetSumValueSource
+   was fixed. (Michael McCandless, Greg Miller)
+ 
++* LUCENE-10466: Ensure IndexSortSortedNumericDocValuesRangeQuery handles sort field
++  types besides LONG (Andriy Redko)
++
+ Build
+ ---------------------
+ 

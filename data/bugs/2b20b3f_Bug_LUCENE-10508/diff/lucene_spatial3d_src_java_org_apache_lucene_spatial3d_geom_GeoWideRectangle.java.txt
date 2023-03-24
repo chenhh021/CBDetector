@@ -1,0 +1,24 @@
+diff --git a/lucene/spatial3d/src/java/org/apache/lucene/spatial3d/geom/GeoWideRectangle.java b/lucene/spatial3d/src/java/org/apache/lucene/spatial3d/geom/GeoWideRectangle.java
+index 227a9d0..e6f9a0d 100755
+--- a/lucene/spatial3d/src/java/org/apache/lucene/spatial3d/geom/GeoWideRectangle.java
++++ b/lucene/spatial3d/src/java/org/apache/lucene/spatial3d/geom/GeoWideRectangle.java
+@@ -26,6 +26,10 @@
+  * @lucene.internal
+  */
+ class GeoWideRectangle extends GeoBaseBBox {
++
++  /** Minimum extent for a rectangle of this type */
++  public static final double MIN_WIDE_EXTENT = Math.PI - Vector.MINIMUM_ANGULAR_RESOLUTION;
++
+   /** The top latitude */
+   protected final double topLat;
+   /** The bottom latitude */
+@@ -111,7 +115,7 @@
+     if (extent < 0.0) {
+       extent += 2.0 * Math.PI;
+     }
+-    if (extent < Math.PI) {
++    if (extent < MIN_WIDE_EXTENT) {
+       throw new IllegalArgumentException("Width of rectangle too small");
+     }
+ 

@@ -1,0 +1,15 @@
+diff --git a/lucene/queries/src/java/org/apache/lucene/queries/function/FunctionRangeQuery.java b/lucene/queries/src/java/org/apache/lucene/queries/function/FunctionRangeQuery.java
+index 05c9e83..2dc65d9 100644
+--- a/lucene/queries/src/java/org/apache/lucene/queries/function/FunctionRangeQuery.java
++++ b/lucene/queries/src/java/org/apache/lucene/queries/function/FunctionRangeQuery.java
+@@ -116,8 +116,8 @@
+   }
+ 
+   private boolean equalsTo(FunctionRangeQuery other) {
+-    return Objects.equals(includeLower, other.includeLower)
+-        && Objects.equals(includeUpper, other.includeUpper)
++    return includeLower == other.includeLower
++        && includeUpper == other.includeUpper
+         && Objects.equals(valueSource, other.valueSource)
+         && Objects.equals(lowerVal, other.lowerVal)
+         && Objects.equals(upperVal, other.upperVal);

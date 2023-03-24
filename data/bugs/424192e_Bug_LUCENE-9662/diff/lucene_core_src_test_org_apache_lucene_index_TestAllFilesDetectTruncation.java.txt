@@ -1,0 +1,13 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/index/TestAllFilesDetectTruncation.java b/lucene/core/src/test/org/apache/lucene/index/TestAllFilesDetectTruncation.java
+index ed272b8..8c94f87 100644
+--- a/lucene/core/src/test/org/apache/lucene/index/TestAllFilesDetectTruncation.java
++++ b/lucene/core/src/test/org/apache/lucene/index/TestAllFilesDetectTruncation.java
+@@ -121,7 +121,7 @@
+       // CheckIndex should also fail:
+       expectThrowsAnyOf(
+           Arrays.asList(CorruptIndexException.class, EOFException.class),
+-          () -> TestUtil.checkIndex(dirCopy, true, true, null));
++          () -> TestUtil.checkIndex(dirCopy, true, true, true, null));
+     }
+   }
+ }

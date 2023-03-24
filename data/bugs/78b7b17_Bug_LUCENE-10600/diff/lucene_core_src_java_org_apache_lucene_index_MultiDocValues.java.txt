@@ -1,0 +1,13 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/index/MultiDocValues.java b/lucene/core/src/java/org/apache/lucene/index/MultiDocValues.java
+index 145c0e3..f528f9c 100644
+--- a/lucene/core/src/java/org/apache/lucene/index/MultiDocValues.java
++++ b/lucene/core/src/java/org/apache/lucene/index/MultiDocValues.java
+@@ -938,7 +938,7 @@
+     }
+ 
+     @Override
+-    public long docValueCount() {
++    public int docValueCount() {
+       return currentValues.docValueCount();
+     }
+ 

@@ -1,0 +1,22 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/index/CheckIndex.java b/lucene/core/src/java/org/apache/lucene/index/CheckIndex.java
+index 81e9eb2..83b31ea 100644
+--- a/lucene/core/src/java/org/apache/lucene/index/CheckIndex.java
++++ b/lucene/core/src/java/org/apache/lucene/index/CheckIndex.java
+@@ -3337,7 +3337,7 @@
+     LongBitSet seenOrds = new LongBitSet(dv.getValueCount());
+     long maxOrd2 = -1;
+     for (int docID = dv.nextDoc(); docID != NO_MORE_DOCS; docID = dv.nextDoc()) {
+-      long count = dv.docValueCount();
++      int count = dv.docValueCount();
+       if (count == 0) {
+         throw new CheckIndexException(
+             "sortedset dv for field: "
+@@ -3348,7 +3348,7 @@
+       if (dv2.advanceExact(docID) == false) {
+         throw new CheckIndexException("advanceExact did not find matching doc ID: " + docID);
+       }
+-      long count2 = dv2.docValueCount();
++      int count2 = dv2.docValueCount();
+       if (count != count2) {
+         throw new CheckIndexException(
+             "advanceExact reports different value count: " + count + " != " + count2);

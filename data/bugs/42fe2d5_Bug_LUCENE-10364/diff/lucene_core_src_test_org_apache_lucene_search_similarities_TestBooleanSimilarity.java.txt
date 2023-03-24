@@ -1,0 +1,13 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/search/similarities/TestBooleanSimilarity.java b/lucene/core/src/test/org/apache/lucene/search/similarities/TestBooleanSimilarity.java
+index 037df62..a40e476 100644
+--- a/lucene/core/src/test/org/apache/lucene/search/similarities/TestBooleanSimilarity.java
++++ b/lucene/core/src/test/org/apache/lucene/search/similarities/TestBooleanSimilarity.java
+@@ -120,7 +120,7 @@
+               100,
+               maxTermFrequency,
+               uniqueTermCount);
+-      assertEquals(sim2.computeNorm(state), sim1.computeNorm(state), 0f);
++      assertEquals(sim2.computeNorm(state), sim1.computeNorm(state));
+     }
+   }
+ 

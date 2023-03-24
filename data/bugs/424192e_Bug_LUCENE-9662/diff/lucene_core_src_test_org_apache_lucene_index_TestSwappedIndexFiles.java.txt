@@ -1,0 +1,18 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/index/TestSwappedIndexFiles.java b/lucene/core/src/test/org/apache/lucene/index/TestSwappedIndexFiles.java
+index 6597454..d11f50d 100644
+--- a/lucene/core/src/test/org/apache/lucene/index/TestSwappedIndexFiles.java
++++ b/lucene/core/src/test/org/apache/lucene/index/TestSwappedIndexFiles.java
+@@ -116,8 +116,11 @@
+       // CheckIndex should also fail:
+       expectThrowsAnyOf(
+           Arrays.asList(
+-              CorruptIndexException.class, EOFException.class, IndexFormatTooOldException.class),
+-          () -> TestUtil.checkIndex(dirCopy, true, true, null));
++              CorruptIndexException.class,
++              EOFException.class,
++              IndexFormatTooOldException.class,
++              CheckIndex.CheckIndexException.class),
++          () -> TestUtil.checkIndex(dirCopy, true, true, true, null));
+     }
+   }
+ }

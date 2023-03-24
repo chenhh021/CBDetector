@@ -1,0 +1,13 @@
+diff --git a/lucene/join/src/java/org/apache/lucene/search/join/GenericTermsCollector.java b/lucene/join/src/java/org/apache/lucene/search/join/GenericTermsCollector.java
+index 383cce1..7a5405f 100644
+--- a/lucene/join/src/java/org/apache/lucene/search/join/GenericTermsCollector.java
++++ b/lucene/join/src/java/org/apache/lucene/search/join/GenericTermsCollector.java
+@@ -94,7 +94,7 @@
+         }
+ 
+         @Override
+-        public long docValueCount() {
++        public int docValueCount() {
+           return target.docValueCount();
+         }
+ 

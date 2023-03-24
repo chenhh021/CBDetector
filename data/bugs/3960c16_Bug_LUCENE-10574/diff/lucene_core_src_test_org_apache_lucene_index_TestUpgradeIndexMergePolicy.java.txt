@@ -1,0 +1,21 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/index/TestUpgradeIndexMergePolicy.java b/lucene/core/src/test/org/apache/lucene/index/TestUpgradeIndexMergePolicy.java
+index e9dad19..3a16bdd 100644
+--- a/lucene/core/src/test/org/apache/lucene/index/TestUpgradeIndexMergePolicy.java
++++ b/lucene/core/src/test/org/apache/lucene/index/TestUpgradeIndexMergePolicy.java
+@@ -25,12 +25,10 @@
+ 
+   @Override
+   public MergePolicy mergePolicy() {
+-    MergePolicy in = newMergePolicy(random());
+-    if (in instanceof TieredMergePolicy) {
+-      // Avoid low values of the max merged segment size which prevent this merge policy from
+-      // scaling well
+-      ((TieredMergePolicy) in).setMaxMergedSegmentMB(TestUtil.nextInt(random(), 1024, 10 * 1024));
+-    }
++    TieredMergePolicy in = newTieredMergePolicy();
++    // Avoid low values of the max merged segment size which prevent this merge policy from
++    // scaling well
++    ((TieredMergePolicy) in).setMaxMergedSegmentMB(TestUtil.nextInt(random(), 1024, 10 * 1024));
+     return new UpgradeIndexMergePolicy(in);
+   }
+ 

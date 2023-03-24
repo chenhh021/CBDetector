@@ -1,0 +1,13 @@
+diff --git a/lucene/queries/src/java/org/apache/lucene/queries/intervals/RepeatingIntervalsSource.java b/lucene/queries/src/java/org/apache/lucene/queries/intervals/RepeatingIntervalsSource.java
+index a174890..d16b2e2 100644
+--- a/lucene/queries/src/java/org/apache/lucene/queries/intervals/RepeatingIntervalsSource.java
++++ b/lucene/queries/src/java/org/apache/lucene/queries/intervals/RepeatingIntervalsSource.java
+@@ -109,7 +109,7 @@
+   public boolean equals(Object other) {
+     if (other instanceof RepeatingIntervalsSource == false) return false;
+     RepeatingIntervalsSource o = (RepeatingIntervalsSource) other;
+-    return Objects.equals(this.in, o.in) && Objects.equals(this.childCount, o.childCount);
++    return Objects.equals(this.in, o.in) && this.childCount == o.childCount;
+   }
+ 
+   @Override

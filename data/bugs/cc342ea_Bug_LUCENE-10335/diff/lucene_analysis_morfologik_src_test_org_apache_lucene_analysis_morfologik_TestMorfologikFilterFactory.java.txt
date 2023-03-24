@@ -1,0 +1,16 @@
+diff --git a/lucene/analysis/morfologik/src/test/org/apache/lucene/analysis/morfologik/TestMorfologikFilterFactory.java b/lucene/analysis/morfologik/src/test/org/apache/lucene/analysis/morfologik/TestMorfologikFilterFactory.java
+index 19ad5a4..9f6a66d 100644
+--- a/lucene/analysis/morfologik/src/test/org/apache/lucene/analysis/morfologik/TestMorfologikFilterFactory.java
++++ b/lucene/analysis/morfologik/src/test/org/apache/lucene/analysis/morfologik/TestMorfologikFilterFactory.java
+@@ -39,11 +39,6 @@
+     public <T> Class<? extends T> findClass(String cname, Class<T> expectedType) {
+       throw new UnsupportedOperationException();
+     }
+-
+-    @Override
+-    public <T> T newInstance(String cname, Class<T> expectedType) {
+-      throw new UnsupportedOperationException();
+-    }
+   }
+ 
+   public void testDefaultDictionary() throws Exception {

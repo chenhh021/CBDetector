@@ -1,0 +1,16 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index 44800ea..44f0cc1 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -465,7 +465,10 @@
+ 
+ Optimizations
+ ---------------------
+-(No changes)
++
++* LUCENE-9673: Substantially improve RAM efficiency of how MemoryIndex stores
++  postings in memory, and reduced a bit of RAM overhead in
++  IndexWriter's internal postings book-keeping (mashudong)
+ 
+ Bug Fixes
+ ---------------------

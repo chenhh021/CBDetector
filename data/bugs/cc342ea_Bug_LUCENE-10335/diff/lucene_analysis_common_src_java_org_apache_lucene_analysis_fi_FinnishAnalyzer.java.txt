@@ -1,0 +1,24 @@
+diff --git a/lucene/analysis/common/src/java/org/apache/lucene/analysis/fi/FinnishAnalyzer.java b/lucene/analysis/common/src/java/org/apache/lucene/analysis/fi/FinnishAnalyzer.java
+index 8119560..e9cfe4d 100644
+--- a/lucene/analysis/common/src/java/org/apache/lucene/analysis/fi/FinnishAnalyzer.java
++++ b/lucene/analysis/common/src/java/org/apache/lucene/analysis/fi/FinnishAnalyzer.java
+@@ -19,7 +19,6 @@
+ import java.io.IOException;
+ import java.io.Reader;
+ import java.io.UncheckedIOException;
+-import java.nio.charset.StandardCharsets;
+ import org.apache.lucene.analysis.Analyzer;
+ import org.apache.lucene.analysis.CharArraySet;
+ import org.apache.lucene.analysis.LowerCaseFilter;
+@@ -65,8 +64,9 @@
+       try {
+         DEFAULT_STOP_SET =
+             WordlistLoader.getSnowballWordSet(
+-                IOUtils.getDecodingReader(
+-                    SnowballFilter.class, DEFAULT_STOPWORD_FILE, StandardCharsets.UTF_8));
++                IOUtils.requireResourceNonNull(
++                    SnowballFilter.class.getResourceAsStream(DEFAULT_STOPWORD_FILE),
++                    DEFAULT_STOPWORD_FILE));
+       } catch (IOException ex) {
+         // default set should always be present as it is part of the
+         // distribution (JAR)

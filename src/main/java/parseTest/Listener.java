@@ -1,8 +1,8 @@
 package parseTest;
 
-import parsers.java.JavaParserBaseListener;
-import parsers.java.JavaParser;
 import org.antlr.v4.runtime.tree.TerminalNode;
+import parsers.java.JavaParser;
+import parsers.java.JavaParserBaseListener;
 
 public class Listener extends JavaParserBaseListener {
 
@@ -33,7 +33,7 @@ public class Listener extends JavaParserBaseListener {
     /** Listen to matches of classDeclaration */
     @Override
     public void enterClassDeclaration(JavaParser.ClassDeclarationContext ctx) {
-        setClassName(ctx.IDENTIFIER().toString());
+        setClassName(ctx.identifier().toString());
     }
 
     /** Listen to matches of methodDeclaration */
@@ -43,7 +43,7 @@ public class Listener extends JavaParserBaseListener {
         methodCount++;
         mccablecomplex++;
 
-        TerminalNode identifier = ctx.IDENTIFIER();
+        JavaParser.IdentifierContext identifier = ctx.identifier();
         if(identifier != null)
         {
             setMethodName(identifier.getText());

@@ -1,0 +1,13 @@
+diff --git a/lucene/test-framework/src/java/org/apache/lucene/index/BaseKnnVectorsFormatTestCase.java b/lucene/test-framework/src/java/org/apache/lucene/index/BaseKnnVectorsFormatTestCase.java
+index 1ff9494..4efc537 100644
+--- a/lucene/test-framework/src/java/org/apache/lucene/index/BaseKnnVectorsFormatTestCase.java
++++ b/lucene/test-framework/src/java/org/apache/lucene/index/BaseKnnVectorsFormatTestCase.java
+@@ -926,7 +926,7 @@
+       }
+ 
+       ByteArrayOutputStream output = new ByteArrayOutputStream();
+-      CheckIndex.Status status = TestUtil.checkIndex(dir, false, true, output);
++      CheckIndex.Status status = TestUtil.checkIndex(dir, false, true, true, output);
+       assertEquals(1, status.segmentInfos.size());
+       CheckIndex.Status.SegmentInfoStatus segStatus = status.segmentInfos.get(0);
+       // total 3 vector values were indexed:

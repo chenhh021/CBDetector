@@ -1,0 +1,6 @@
+diff --git a/lucene/test-framework/src/resources/org/apache/lucene/tests/geo/lucene-10563-1.geojson.gz b/lucene/test-framework/src/resources/org/apache/lucene/tests/geo/lucene-10563-1.geojson.gz
+new file mode 100644
+index 0000000..5f283a3
+--- /dev/null
++++ b/lucene/test-framework/src/resources/org/apache/lucene/tests/geo/lucene-10563-1.geojson.gz
+Binary files differ

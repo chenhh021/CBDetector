@@ -1,0 +1,13 @@
+diff --git a/lucene/facet/src/java/org/apache/lucene/facet/sortedset/ConcurrentSortedSetDocValuesFacetCounts.java b/lucene/facet/src/java/org/apache/lucene/facet/sortedset/ConcurrentSortedSetDocValuesFacetCounts.java
+index 928da66..8d9238c 100644
+--- a/lucene/facet/src/java/org/apache/lucene/facet/sortedset/ConcurrentSortedSetDocValuesFacetCounts.java
++++ b/lucene/facet/src/java/org/apache/lucene/facet/sortedset/ConcurrentSortedSetDocValuesFacetCounts.java
+@@ -130,7 +130,7 @@
+         // child:
+         childIt.next();
+       }
+-      return getPathResult(dimConfig, dim, null, -dimOrd, childIt, topN);
++      return getPathResult(dimConfig, dim, null, dimOrd, childIt, topN);
+     }
+   }
+ 

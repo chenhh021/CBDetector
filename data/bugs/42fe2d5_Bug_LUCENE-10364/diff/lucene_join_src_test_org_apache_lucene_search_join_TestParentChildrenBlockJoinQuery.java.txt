@@ -1,0 +1,13 @@
+diff --git a/lucene/join/src/test/org/apache/lucene/search/join/TestParentChildrenBlockJoinQuery.java b/lucene/join/src/test/org/apache/lucene/search/join/TestParentChildrenBlockJoinQuery.java
+index fa0c256..10cbe16 100644
+--- a/lucene/join/src/test/org/apache/lucene/search/join/TestParentChildrenBlockJoinQuery.java
++++ b/lucene/join/src/test/org/apache/lucene/search/join/TestParentChildrenBlockJoinQuery.java
+@@ -93,7 +93,7 @@
+       if (expectedChildDocs > 0) {
+         for (int i = 0; i < topDocs.scoreDocs.length; i++) {
+           ScoreDoc childScoreDoc = topDocs.scoreDocs[i];
+-          assertEquals(expectedChildDocs - i, childScoreDoc.score, 0);
++          assertEquals((float) expectedChildDocs - i, childScoreDoc.score, 0.f);
+         }
+       }
+     }

@@ -1,0 +1,12 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/index/TestMultiDocValues.java b/lucene/core/src/test/org/apache/lucene/index/TestMultiDocValues.java
+index 018d759..9672fda 100644
+--- a/lucene/core/src/test/org/apache/lucene/index/TestMultiDocValues.java
++++ b/lucene/core/src/test/org/apache/lucene/index/TestMultiDocValues.java
+@@ -279,6 +279,7 @@
+         if (docID == NO_MORE_DOCS) {
+           break;
+         }
++        assertEquals(single.docValueCount(), multi.docValueCount());
+ 
+         ArrayList<Long> expectedList = new ArrayList<>();
+         long ord;

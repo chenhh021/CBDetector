@@ -1,0 +1,29 @@
+diff --git a/lucene/analysis/common/src/java/org/apache/lucene/analysis/hy/ArmenianAnalyzer.java b/lucene/analysis/common/src/java/org/apache/lucene/analysis/hy/ArmenianAnalyzer.java
+index ec76e5e..3d6a34b 100644
+--- a/lucene/analysis/common/src/java/org/apache/lucene/analysis/hy/ArmenianAnalyzer.java
++++ b/lucene/analysis/common/src/java/org/apache/lucene/analysis/hy/ArmenianAnalyzer.java
+@@ -26,9 +26,11 @@
+ import org.apache.lucene.analysis.StopwordAnalyzerBase;
+ import org.apache.lucene.analysis.TokenStream;
+ import org.apache.lucene.analysis.Tokenizer;
++import org.apache.lucene.analysis.WordlistLoader;
+ import org.apache.lucene.analysis.miscellaneous.SetKeywordMarkerFilter;
+ import org.apache.lucene.analysis.snowball.SnowballFilter;
+ import org.apache.lucene.analysis.standard.StandardTokenizer;
++import org.apache.lucene.util.IOUtils;
+ import org.tartarus.snowball.ext.ArmenianStemmer;
+ 
+ /**
+@@ -61,7 +63,11 @@
+     static {
+       try {
+         DEFAULT_STOP_SET =
+-            loadStopwordSet(false, ArmenianAnalyzer.class, DEFAULT_STOPWORD_FILE, "#");
++            WordlistLoader.getWordSet(
++                IOUtils.requireResourceNonNull(
++                    ArmenianAnalyzer.class.getResourceAsStream(DEFAULT_STOPWORD_FILE),
++                    DEFAULT_STOPWORD_FILE),
++                "#");
+       } catch (IOException ex) {
+         // default set should always be present as it is part of the
+         // distribution (JAR)

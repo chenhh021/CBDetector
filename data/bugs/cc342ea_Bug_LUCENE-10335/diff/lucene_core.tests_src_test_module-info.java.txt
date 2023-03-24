@@ -1,0 +1,13 @@
+diff --git a/lucene/core.tests/src/test/module-info.java b/lucene/core.tests/src/test/module-info.java
+index 9b3cf5a..21fb271 100644
+--- a/lucene/core.tests/src/test/module-info.java
++++ b/lucene/core.tests/src/test/module-info.java
+@@ -22,4 +22,8 @@
+   requires junit;
+ 
+   exports org.apache.lucene.core.tests;
++
++  // this is to test ModuleResourceLoader
++  opens org.apache.lucene.core.testresources to
++      org.apache.lucene.core;
+ }

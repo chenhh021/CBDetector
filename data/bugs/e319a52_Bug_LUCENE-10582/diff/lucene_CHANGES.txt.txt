@@ -1,0 +1,13 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index 603edac..4b3f15b 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -88,6 +88,8 @@
+ 
+ * LUCENE-10574: Prevent pathological O(N^2) merging. (Adrien Grand)
+ 
++* LUCENE-10582: Fix merging of overridden CollectionStatistics in CombinedFieldQuery (Yannick Welsch)
++
+ Other
+ ---------------------
+ 

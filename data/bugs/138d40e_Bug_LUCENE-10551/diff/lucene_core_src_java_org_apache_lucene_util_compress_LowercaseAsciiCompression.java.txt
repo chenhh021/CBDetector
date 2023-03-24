@@ -1,0 +1,24 @@
+diff --git a/lucene/core/src/java/org/apache/lucene/util/compress/LowercaseAsciiCompression.java b/lucene/core/src/java/org/apache/lucene/util/compress/LowercaseAsciiCompression.java
+index a70a89e..1f287c3 100644
+--- a/lucene/core/src/java/org/apache/lucene/util/compress/LowercaseAsciiCompression.java
++++ b/lucene/core/src/java/org/apache/lucene/util/compress/LowercaseAsciiCompression.java
+@@ -111,14 +111,13 @@
+           numExceptions2++;
+         }
+       }
++
++      // TODO: shouldn't this really be an assert instead?  but then this real "if" triggered
++      // LUCENE-10551 so maybe it should remain a real "if":
++
+       if (numExceptions != numExceptions2) {
+         throw new IllegalStateException(
+-            ""
+-                + numExceptions
+-                + " <> "
+-                + numExceptions2
+-                + " "
+-                + new BytesRef(in, 0, len).utf8ToString());
++            "" + numExceptions + " <> " + numExceptions2 + " " + new BytesRef(in, 0, len));
+       }
+     }
+ 

@@ -1,0 +1,57 @@
+diff --git a/lucene/queryparser/src/java/org/apache/lucene/queryparser/classic/QueryParserBase.java b/lucene/queryparser/src/java/org/apache/lucene/queryparser/classic/QueryParserBase.java
+index 0595b86..433e824 100644
+--- a/lucene/queryparser/src/java/org/apache/lucene/queryparser/classic/QueryParserBase.java
++++ b/lucene/queryparser/src/java/org/apache/lucene/queryparser/classic/QueryParserBase.java
+@@ -541,9 +541,7 @@
+    * @return new PrefixQuery instance
+    */
+   protected Query newPrefixQuery(Term prefix) {
+-    PrefixQuery query = new PrefixQuery(prefix);
+-    query.setRewriteMethod(multiTermRewriteMethod);
+-    return query;
++    return new PrefixQuery(prefix, multiTermRewriteMethod);
+   }
+ 
+   /**
+@@ -553,9 +551,13 @@
+    * @return new RegexpQuery instance
+    */
+   protected Query newRegexpQuery(Term regexp) {
+-    RegexpQuery query = new RegexpQuery(regexp, RegExp.ALL, determinizeWorkLimit);
+-    query.setRewriteMethod(multiTermRewriteMethod);
+-    return query;
++    return new RegexpQuery(
++        regexp,
++        RegExp.ALL,
++        0,
++        RegexpQuery.DEFAULT_PROVIDER,
++        determinizeWorkLimit,
++        multiTermRewriteMethod);
+   }
+ 
+   /**
+@@ -601,11 +603,8 @@
+       end = getAnalyzer().normalize(field, part2);
+     }
+ 
+-    final TermRangeQuery query =
+-        new TermRangeQuery(field, start, end, startInclusive, endInclusive);
+-
+-    query.setRewriteMethod(multiTermRewriteMethod);
+-    return query;
++    return new TermRangeQuery(
++        field, start, end, startInclusive, endInclusive, multiTermRewriteMethod);
+   }
+ 
+   /**
+@@ -624,9 +623,7 @@
+    * @return new WildcardQuery instance
+    */
+   protected Query newWildcardQuery(Term t) {
+-    WildcardQuery query = new WildcardQuery(t, determinizeWorkLimit);
+-    query.setRewriteMethod(multiTermRewriteMethod);
+-    return query;
++    return new WildcardQuery(t, determinizeWorkLimit, multiTermRewriteMethod);
+   }
+ 
+   /**

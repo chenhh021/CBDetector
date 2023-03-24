@@ -1,0 +1,47 @@
+diff --git a/lucene/suggest/src/java/org/apache/lucene/search/suggest/analyzing/FreeTextSuggester.java b/lucene/suggest/src/java/org/apache/lucene/search/suggest/analyzing/FreeTextSuggester.java
+index 4e5ff17..7e147c8 100644
+--- a/lucene/suggest/src/java/org/apache/lucene/search/suggest/analyzing/FreeTextSuggester.java
++++ b/lucene/suggest/src/java/org/apache/lucene/search/suggest/analyzing/FreeTextSuggester.java
+@@ -140,7 +140,7 @@
+   private final byte separator;
+ 
+   /** Number of entries the lookup was built with */
+-  private long count = 0;
++  private volatile long count = 0;
+ 
+   /**
+    * The default character used to join multiple tokens into a single ngram token. The input tokens
+@@ -273,7 +273,7 @@
+     IndexReader reader = null;
+ 
+     boolean success = false;
+-    count = 0;
++    long newCount = 0;
+     try {
+       while (true) {
+         BytesRef surfaceForm = iterator.next();
+@@ -282,7 +282,7 @@
+         }
+         field.setStringValue(surfaceForm.utf8ToString());
+         writer.addDocument(doc);
+-        count++;
++        newCount++;
+       }
+       reader = DirectoryReader.open(writer);
+ 
+@@ -320,10 +320,13 @@
+         fstCompiler.add(Util.toIntsRef(term, scratchInts), encodeWeight(termsEnum.totalTermFreq()));
+       }
+ 
+-      fst = fstCompiler.compile();
+-      if (fst == null) {
++      final FST<Long> newFst = fstCompiler.compile();
++      if (newFst == null) {
+         throw new IllegalArgumentException("need at least one suggestion");
+       }
++      fst = newFst;
++      count = newCount;
++
+       // System.out.println("FST: " + fst.getNodeCount() + " nodes");
+ 
+       /*

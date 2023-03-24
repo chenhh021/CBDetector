@@ -1,0 +1,24 @@
+diff --git a/lucene/analysis/morfologik/src/test/org/apache/lucene/analysis/uk/TestUkrainianAnalyzer.java b/lucene/analysis/morfologik/src/test/org/apache/lucene/analysis/uk/TestUkrainianAnalyzer.java
+index e04f626..f984ff8 100644
+--- a/lucene/analysis/morfologik/src/test/org/apache/lucene/analysis/uk/TestUkrainianAnalyzer.java
++++ b/lucene/analysis/morfologik/src/test/org/apache/lucene/analysis/uk/TestUkrainianAnalyzer.java
+@@ -18,6 +18,7 @@
+ 
+ import java.io.IOException;
+ import org.apache.lucene.analysis.Analyzer;
++import org.apache.lucene.analysis.CharArraySet;
+ import org.apache.lucene.tests.analysis.BaseTokenStreamTestCase;
+ 
+ /** Test case for UkrainianAnalyzer. */
+@@ -99,4 +100,11 @@
+     checkRandomData(random(), analyzer, 200 * RANDOM_MULTIPLIER);
+     analyzer.close();
+   }
++
++  public void testDefaultStopWords() {
++    CharArraySet stopwords = UkrainianMorfologikAnalyzer.getDefaultStopwords();
++    assertTrue(stopwords.contains("аби"));
++    stopwords.remove("аби");
++    assertTrue(UkrainianMorfologikAnalyzer.getDefaultStopwords().contains("аби"));
++  }
+ }

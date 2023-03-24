@@ -1,0 +1,15 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index d3f3c4d..fef1ec9 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -137,7 +137,9 @@
+ * LUCENE-10508: Fixes some edge cases where GeoArea were built in a way that vertical planes
+   could not evaluate their sign, either because the planes where the same or the center between those
+   planes was lying in one of the planes. (Ignacio Vera)
+-  
++
++* LUCENE-10495: Fix return statement of siblingsLoaded() in TaxonomyFacets. (Yuting Gan)
++
+ Build
+ ---------------------
+ 

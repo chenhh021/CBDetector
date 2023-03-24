@@ -1,0 +1,14 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index d162714..6dc2ad6 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -217,6 +217,9 @@
+ * LUCENE-9952: Address inaccurate dim counts for SSDV faceting in cases where a dim is configured
+   as multi-valued. (Greg Miller)
+ 
++* LUCENE-10401: Fix lookups on empty doc-value terms dictionaries to no longer
++  throw an ArrayIndexOutOfBoundsException. (Adrien Grand)
++
+ Other
+ ---------------------
+ 

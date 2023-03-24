@@ -1,0 +1,39 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/search/TestAutomatonQueryUnicode.java b/lucene/core/src/test/org/apache/lucene/search/TestAutomatonQueryUnicode.java
+index 951dbd8..cee8825 100644
+--- a/lucene/core/src/test/org/apache/lucene/search/TestAutomatonQueryUnicode.java
++++ b/lucene/core/src/test/org/apache/lucene/search/TestAutomatonQueryUnicode.java
+@@ -97,16 +97,24 @@
+   }
+ 
+   private void assertAutomatonHits(int expected, Automaton automaton) throws IOException {
+-    AutomatonQuery query = new AutomatonQuery(newTerm("bogus"), automaton);
+-
+-    query.setRewriteMethod(MultiTermQuery.SCORING_BOOLEAN_REWRITE);
+-    assertEquals(expected, automatonQueryNrHits(query));
+-
+-    query.setRewriteMethod(MultiTermQuery.CONSTANT_SCORE_REWRITE);
+-    assertEquals(expected, automatonQueryNrHits(query));
+-
+-    query.setRewriteMethod(MultiTermQuery.CONSTANT_SCORE_BOOLEAN_REWRITE);
+-    assertEquals(expected, automatonQueryNrHits(query));
++    assertEquals(
++        expected,
++        automatonQueryNrHits(
++            new AutomatonQuery(
++                newTerm("bogus"), automaton, false, MultiTermQuery.SCORING_BOOLEAN_REWRITE)));
++    assertEquals(
++        expected,
++        automatonQueryNrHits(
++            new AutomatonQuery(
++                newTerm("bogus"), automaton, false, MultiTermQuery.CONSTANT_SCORE_REWRITE)));
++    assertEquals(
++        expected,
++        automatonQueryNrHits(
++            new AutomatonQuery(
++                newTerm("bogus"),
++                automaton,
++                false,
++                MultiTermQuery.CONSTANT_SCORE_BOOLEAN_REWRITE)));
+   }
+ 
+   /**

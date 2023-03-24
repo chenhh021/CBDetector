@@ -1,0 +1,14 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index 9578e14..64f9945 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -93,6 +93,9 @@
+ 
+ * LUCENE-10279: Fix equals in MultiRangeQuery. (Ignacio Vera)
+ 
++* LUCENE-10287: Fix Luke startup script to add jdk.unsupported module so
++  MMapDirectory is used when opening indexes. (Uwe Schindler)
++
+ Other
+ ---------------------
+ 

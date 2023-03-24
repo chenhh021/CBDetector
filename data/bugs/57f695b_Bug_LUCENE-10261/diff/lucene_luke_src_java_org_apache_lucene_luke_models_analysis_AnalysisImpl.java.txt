@@ -1,0 +1,28 @@
+diff --git a/lucene/luke/src/java/org/apache/lucene/luke/models/analysis/AnalysisImpl.java b/lucene/luke/src/java/org/apache/lucene/luke/models/analysis/AnalysisImpl.java
+index 7c5c001..e68383c 100644
+--- a/lucene/luke/src/java/org/apache/lucene/luke/models/analysis/AnalysisImpl.java
++++ b/lucene/luke/src/java/org/apache/lucene/luke/models/analysis/AnalysisImpl.java
+@@ -50,7 +50,7 @@
+ /** Default implementation of {@link AnalysisImpl} */
+ public final class AnalysisImpl implements Analysis {
+ 
+-  private Analyzer analyzer;
++  private Analyzer analyzer = defaultAnalyzer();
+ 
+   @Override
+   public void addExternalJars(List<String> jarFiles) {
+@@ -152,6 +152,14 @@
+     }
+   }
+ 
++  private Analyzer defaultAnalyzer() {
++    try {
++      return CustomAnalyzer.builder().withTokenizer("standard").build();
++    } catch (IOException e) {
++      throw new LukeException("Failed to build custom analyzer.", e);
++    }
++  }
++
+   @Override
+   public Analyzer buildCustomAnalyzer(CustomAnalyzerConfig config) {
+     Objects.requireNonNull(config);

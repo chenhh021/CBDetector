@@ -1,0 +1,14 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index 470a73c..2792af7 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -83,7 +83,8 @@
+ 
+ Bug Fixes
+ ---------------------
+-(No changes)
++
++* LUCENE-10574: Prevent pathological O(N^2) merging. (Adrien Grand)
+ 
+ Other
+ ---------------------

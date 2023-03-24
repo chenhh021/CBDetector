@@ -1,0 +1,28 @@
+diff --git a/lucene/facet/src/java/org/apache/lucene/facet/DrillSidewaysQuery.java b/lucene/facet/src/java/org/apache/lucene/facet/DrillSidewaysQuery.java
+index 47f9ae3..8164301 100644
+--- a/lucene/facet/src/java/org/apache/lucene/facet/DrillSidewaysQuery.java
++++ b/lucene/facet/src/java/org/apache/lucene/facet/DrillSidewaysQuery.java
+@@ -160,15 +160,14 @@
+ 
+       @Override
+       public boolean isCacheable(LeafReaderContext ctx) {
+-        if (baseWeight.isCacheable(ctx) == false) {
+-          return false;
+-        }
+-        for (Weight w : drillDowns) {
+-          if (w.isCacheable(ctx) == false) {
+-            return false;
+-          }
+-        }
+-        return true;
++        // We can never cache DSQ instances. It's critical that the BulkScorer produced by this
++        // Weight runs through the "normal" execution path so that it has access to an
++        // "acceptDocs" instance that accurately reflects deleted docs. During caching,
++        // "acceptDocs" is null so that caching over-matches (since the final BulkScorer would
++        // account for deleted docs). The problem is that this BulkScorer has a side-effect of
++        // populating the "sideways" FacetsCollectors, so it will use deleted docs in its
++        // sideways counting if caching kicks in. See LUCENE-10060:
++        return false;
+       }
+ 
+       @Override

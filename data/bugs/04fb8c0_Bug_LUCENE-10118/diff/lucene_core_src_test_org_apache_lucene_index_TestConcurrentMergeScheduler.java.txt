@@ -1,0 +1,35 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/index/TestConcurrentMergeScheduler.java b/lucene/core/src/test/org/apache/lucene/index/TestConcurrentMergeScheduler.java
+index 4ad8339..6ec2946 100644
+--- a/lucene/core/src/test/org/apache/lucene/index/TestConcurrentMergeScheduler.java
++++ b/lucene/core/src/test/org/apache/lucene/index/TestConcurrentMergeScheduler.java
+@@ -19,6 +19,7 @@
+ import com.carrotsearch.randomizedtesting.generators.RandomStrings;
+ import java.io.IOException;
+ import java.util.ArrayList;
++import java.util.Collections;
+ import java.util.List;
+ import java.util.Map;
+ import java.util.Set;
+@@ -638,7 +639,7 @@
+         };
+     iwc.setMergeScheduler(cms);
+ 
+-    List<String> messages = new ArrayList<>();
++    List<String> messages = Collections.synchronizedList(new ArrayList<>());
+     iwc.setInfoStream(
+         new InfoStream() {
+           @Override
+@@ -682,7 +683,12 @@
+           messages.stream()
+               .filter(line -> line.startsWith("merge thread " + name))
+               .collect(Collectors.toList());
+-      assertTrue(threadMsgs.size() >= 3);
++      assertTrue(
++          "Expected:·a·value·equal·to·or·greater·than·3,·got:"
++              + threadMsgs.size()
++              + ", threadMsgs="
++              + threadMsgs,
++          threadMsgs.size() >= 3);
+       assertTrue(threadMsgs.get(0).startsWith("merge thread " + name + " start"));
+       assertTrue(
+           threadMsgs.stream()

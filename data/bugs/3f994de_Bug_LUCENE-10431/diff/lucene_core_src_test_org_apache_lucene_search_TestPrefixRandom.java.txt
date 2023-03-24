@@ -1,0 +1,13 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/search/TestPrefixRandom.java b/lucene/core/src/test/org/apache/lucene/search/TestPrefixRandom.java
+index 2d0cdec..c6136be 100644
+--- a/lucene/core/src/test/org/apache/lucene/search/TestPrefixRandom.java
++++ b/lucene/core/src/test/org/apache/lucene/search/TestPrefixRandom.java
+@@ -81,7 +81,7 @@
+     private final BytesRef prefix;
+ 
+     DumbPrefixQuery(Term term) {
+-      super(term.field());
++      super(term.field(), CONSTANT_SCORE_REWRITE);
+       prefix = term.bytes();
+     }
+ 

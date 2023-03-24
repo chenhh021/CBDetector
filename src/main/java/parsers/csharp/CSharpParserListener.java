@@ -1,5 +1,5 @@
-// Generated from .\CSharpParser.g4 by ANTLR 4.9.2
 package parsers.csharp;
+// Generated from CSharpParser.g4 by ANTLR 4.12.0
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -357,6 +357,16 @@ public interface CSharpParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitUnary_expression(CSharpParser.Unary_expressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CSharpParser#cast_expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterCast_expression(CSharpParser.Cast_expressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CSharpParser#cast_expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitCast_expression(CSharpParser.Cast_expressionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CSharpParser#primary_expression}.
 	 * @param ctx the parse tree

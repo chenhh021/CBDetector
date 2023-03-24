@@ -1,0 +1,33 @@
+diff --git a/lucene/demo/src/test/org/apache/lucene/demo/TestDemo.java b/lucene/demo/src/test/org/apache/lucene/demo/TestDemo.java
+index 9d0d0dd..8a2ad50 100644
+--- a/lucene/demo/src/test/org/apache/lucene/demo/TestDemo.java
++++ b/lucene/demo/src/test/org/apache/lucene/demo/TestDemo.java
+@@ -20,7 +20,6 @@
+ import java.io.PrintStream;
+ import java.nio.charset.Charset;
+ import java.nio.file.Path;
+-import org.apache.lucene.demo.knn.KnnVectorDict;
+ import org.apache.lucene.util.LuceneTestCase;
+ 
+ public class TestDemo extends LuceneTestCase {
+@@ -90,10 +89,8 @@
+   public void testKnnVectorSearch() throws Exception {
+     Path dir = getDataPath("test-files/docs");
+     Path indexDir = createTempDir("ContribDemoTest");
+-    Path dictPath = indexDir.resolve("knn-dict");
+-    Path vectorDictSource = getDataPath("test-files/knn-dict").resolve("knn-token-vectors");
+-    KnnVectorDict.build(vectorDictSource, dictPath);
+ 
++    Path vectorDictSource = getDataPath("test-files/knn-dict").resolve("knn-token-vectors");
+     IndexFiles.main(
+         new String[] {
+           "-create",
+@@ -102,7 +99,7 @@
+           "-index",
+           indexDir.toString(),
+           "-knn_dict",
+-          dictPath.toString()
++          vectorDictSource.toString()
+         });
+ 
+     // We add a single semantic hit by passing the "-knn_vector 1" argument to SearchFiles.  The

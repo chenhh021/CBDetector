@@ -1,5 +1,5 @@
-// Generated from .\CSharpParser.g4 by ANTLR 4.9.2
 package parsers.csharp;
+// Generated from CSharpParser.g4 by ANTLR 4.12.0
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -10,6 +10,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
+@SuppressWarnings("CheckReturnValue")
 public class CSharpParserBaseListener implements CSharpParserListener {
 	/**
 	 * {@inheritDoc}
@@ -431,6 +432,18 @@ public class CSharpParserBaseListener implements CSharpParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitUnary_expression(CSharpParser.Unary_expressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCast_expression(CSharpParser.Cast_expressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCast_expression(CSharpParser.Cast_expressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1393,7 +1406,6 @@ public class CSharpParserBaseListener implements CSharpParserListener {
 	@Override public void exitUncheckedStatement(CSharpParser.UncheckedStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
-	 *
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */

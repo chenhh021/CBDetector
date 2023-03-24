@@ -1,0 +1,13 @@
+diff --git a/lucene/analysis/common/src/tools/java/org/apache/lucene/analysis/standard/GenerateJflexTLDMacros.java b/lucene/analysis/common/src/tools/java/org/apache/lucene/analysis/standard/GenerateJflexTLDMacros.java
+index 065ebaa..24646e3 100644
+--- a/lucene/analysis/common/src/tools/java/org/apache/lucene/analysis/standard/GenerateJflexTLDMacros.java
++++ b/lucene/analysis/common/src/tools/java/org/apache/lucene/analysis/standard/GenerateJflexTLDMacros.java
+@@ -171,6 +171,8 @@
+    * care about TLDs that are prefixes and are exactly one character shorter than another TLD. See
+    * LUCENE-8278 and LUCENE-5391.
+    */
++  @SuppressWarnings(
++      "ModifyCollectionInEnhancedForLoop") // it looks like it works because it is a sorted map!
+   private void partitionTLDprefixesBySuffixLength() {
+     TLDsBySuffixLength.add(new TreeSet<>()); // initialize set for zero-suffix TLDs
+     for (SortedMap.Entry<String, Boolean> entry : processedTLDsLongestFirst.entrySet()) {

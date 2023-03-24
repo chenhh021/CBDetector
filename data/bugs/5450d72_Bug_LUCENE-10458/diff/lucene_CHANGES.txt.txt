@@ -1,0 +1,33 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index db1eba1..435434a 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -56,6 +56,10 @@
+ 
+ New Features
+ ---------------------
++
++* LUCENE-10385: Implement Weight#count on IndexSortSortedNumericDocValuesRangeQuery
++  to speed up computing the number of hits when possible. (Lu Xugang, Luca Cavanna, Adrien Grand)
++
+ * LUCENE-10422: Monitor Improvements: `Monitor` can use a custom `Directory` 
+ implementation. `Monitor` can be created with a readonly `QueryIndex` in order to 
+ have readonly `Monitor` instances. (Niko Usai)
+@@ -66,6 +70,7 @@
+ 
+ Optimizations
+ ---------------------
++
+ * LUCENE-10452: Hunspell: call checkCanceled less frequently to reduce the overhead (Peter Gromov)
+ 
+ * LUCENE-10451: Hunspell: don't perform potentially expensive spellchecking after timeout (Peter Gromov)
+@@ -195,9 +200,6 @@
+   based on TotalHitCountCollector that allows users to parallelize counting the
+   number of hits. (Luca Cavanna, Adrien Grand)
+ 
+-* LUCENE-10385: Implement Weight#count on IndexSortSortedNumericDocValuesRangeQuery
+-  to speed up computing the number of hits when possible. (Luca Cavanna, Adrien Grand)
+-
+ * LUCENE-10403: Add ArrayUtil#grow(T[]). (Greg Miller)
+ 
+ * LUCENE-10414: Add fn:fuzzyTerm interval function to flexible query parser (Dawid Weiss, 

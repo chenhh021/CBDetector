@@ -1,0 +1,12 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/util/TestSparseFixedBitSet.java b/lucene/core/src/test/org/apache/lucene/util/TestSparseFixedBitSet.java
+index c17e0c9..4cb1b92 100644
+--- a/lucene/core/src/test/org/apache/lucene/util/TestSparseFixedBitSet.java
++++ b/lucene/core/src/test/org/apache/lucene/util/TestSparseFixedBitSet.java
+@@ -103,6 +103,6 @@
+ 
+     BitSet orCopy = new SparseFixedBitSet(size);
+     orCopy.or(new BitSetIterator(original, size));
+-    assertEquals(orCopy.ramBytesUsed(), original.ramBytesUsed(), 64L);
++    assertTrue(Math.abs(original.ramBytesUsed() - orCopy.ramBytesUsed()) <= 64L);
+   }
+ }

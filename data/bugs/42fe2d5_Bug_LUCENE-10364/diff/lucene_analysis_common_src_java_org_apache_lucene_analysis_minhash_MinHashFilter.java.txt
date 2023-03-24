@@ -1,0 +1,13 @@
+diff --git a/lucene/analysis/common/src/java/org/apache/lucene/analysis/minhash/MinHashFilter.java b/lucene/analysis/common/src/java/org/apache/lucene/analysis/minhash/MinHashFilter.java
+index cef5b6c..32889f3 100644
+--- a/lucene/analysis/common/src/java/org/apache/lucene/analysis/minhash/MinHashFilter.java
++++ b/lucene/analysis/common/src/java/org/apache/lucene/analysis/minhash/MinHashFilter.java
+@@ -333,7 +333,7 @@
+     public boolean add(final E toAdd) {
+       if (capacity <= size()) {
+         final E lastElm = last();
+-        if (toAdd.compareTo(lastElm) > -1) {
++        if (toAdd.compareTo(lastElm) >= 0) {
+           return false;
+         } else {
+           pollLast();

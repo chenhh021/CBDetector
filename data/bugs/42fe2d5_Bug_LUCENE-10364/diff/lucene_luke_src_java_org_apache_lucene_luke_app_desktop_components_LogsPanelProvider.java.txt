@@ -1,0 +1,13 @@
+diff --git a/lucene/luke/src/java/org/apache/lucene/luke/app/desktop/components/LogsPanelProvider.java b/lucene/luke/src/java/org/apache/lucene/luke/app/desktop/components/LogsPanelProvider.java
+index 4ddd2b2..400524d 100644
+--- a/lucene/luke/src/java/org/apache/lucene/luke/app/desktop/components/LogsPanelProvider.java
++++ b/lucene/luke/src/java/org/apache/lucene/luke/app/desktop/components/LogsPanelProvider.java
+@@ -102,7 +102,7 @@
+                 String logContent =
+                     clonedCopy.stream()
+                         .filter(record -> record.getLevel().intValue() >= level.intValue())
+-                        .map(formatter::apply)
++                        .map(formatter)
+                         .collect(Collectors.joining("\n"));
+ 
+                 logTextArea.setText(logContent);

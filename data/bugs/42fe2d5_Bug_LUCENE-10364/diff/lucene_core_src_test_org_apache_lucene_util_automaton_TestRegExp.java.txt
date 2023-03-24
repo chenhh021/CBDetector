@@ -1,0 +1,13 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/util/automaton/TestRegExp.java b/lucene/core/src/test/org/apache/lucene/util/automaton/TestRegExp.java
+index eedf07c..4cb145b 100644
+--- a/lucene/core/src/test/org/apache/lucene/util/automaton/TestRegExp.java
++++ b/lucene/core/src/test/org/apache/lucene/util/automaton/TestRegExp.java
+@@ -143,7 +143,7 @@
+         break;
+       case 6:
+         // replace all chars with .
+-        result.append(replacementPart.replaceAll(".", "."));
++        result.append(".".repeat(replacementPart.length()));
+         break;
+       case 7:
+         // OR with uppercase chars eg [aA] (many of these sorts of expression in the wild..

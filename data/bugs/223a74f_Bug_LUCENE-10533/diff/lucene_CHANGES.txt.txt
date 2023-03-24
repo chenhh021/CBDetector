@@ -1,0 +1,13 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index 8e1bfcc..d199da1 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -147,6 +147,8 @@
+ 
+ * LUCENE-10495: Fix return statement of siblingsLoaded() in TaxonomyFacets. (Yuting Gan)
+ 
++* LUCENE-10533: SpellChecker.formGrams is missing bounds check (Kevin Risden)
++
+ Build
+ ---------------------
+ 

@@ -1,0 +1,14 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index f8acd3c..c0bce20 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -568,6 +568,9 @@
+ * LUCENE-10106: Sort optimization can wrongly skip the first document of
+   each segment (Nhat Nguyen)
+ 
++* LUCENE-10119: Sort optimization with search_after can wrongly skip documents
++  whose values are equal to the last value of the previous page (Nhat Nguyen)
++
+ Other
+ ---------------------
+ (No changes)

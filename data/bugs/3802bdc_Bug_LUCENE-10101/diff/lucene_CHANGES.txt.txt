@@ -1,0 +1,14 @@
+diff --git a/lucene/CHANGES.txt b/lucene/CHANGES.txt
+index 3390372..23f4110 100644
+--- a/lucene/CHANGES.txt
++++ b/lucene/CHANGES.txt
+@@ -310,6 +310,9 @@
+ 
+ * LUCENE-10047: Fix a value de-duping bug in LongValueFacetCounts and RangeFacetCounts
+   (Greg Miller)
++  
++* LUCENE-10101, LUCENE-9281: Use getField() instead of getDeclaredField() to
++  minimize security impact by analysis SPI discovery. (Uwe Schindler)
+ 
+ Changes in Backwards Compatibility Policy
+ 

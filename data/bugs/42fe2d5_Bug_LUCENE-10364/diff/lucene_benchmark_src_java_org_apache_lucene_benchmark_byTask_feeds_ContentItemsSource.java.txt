@@ -1,0 +1,22 @@
+diff --git a/lucene/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/ContentItemsSource.java b/lucene/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/ContentItemsSource.java
+index b77b72d..9dfefaf 100644
+--- a/lucene/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/ContentItemsSource.java
++++ b/lucene/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/ContentItemsSource.java
+@@ -186,7 +186,7 @@
+       sb.append("total bytes of ")
+           .append(itemsName)
+           .append(": ")
+-          .append(Format.format(0, nub, col))
++          .append(Format.format(0, (double) nub, col))
+           .append(newline);
+       lastPrintedNumUniqueBytes = nub;
+     }
+@@ -200,7 +200,7 @@
+       sb.append("total bytes added for ")
+           .append(itemsName)
+           .append(" since last inputs reset: ")
+-          .append(Format.format(0, getBytesCount(), col))
++          .append(Format.format(0, (double) getBytesCount(), col))
+           .append(newline);
+     }
+     if (print) {

@@ -1,0 +1,12 @@
+diff --git a/lucene/core/src/test/org/apache/lucene/util/hnsw/TestHnswGraph.java b/lucene/core/src/test/org/apache/lucene/util/hnsw/TestHnswGraph.java
+index c46f12d..42002a0 100644
+--- a/lucene/core/src/test/org/apache/lucene/util/hnsw/TestHnswGraph.java
++++ b/lucene/core/src/test/org/apache/lucene/util/hnsw/TestHnswGraph.java
+@@ -365,6 +365,7 @@
+         actual);
+   }
+ 
++  @AwaitsFix(bugUrl = "https://issues.apache.org/jira/browse/LUCENE-10389")
+   public void testRandom() throws IOException {
+     int size = atLeast(100);
+     int dim = atLeast(10);

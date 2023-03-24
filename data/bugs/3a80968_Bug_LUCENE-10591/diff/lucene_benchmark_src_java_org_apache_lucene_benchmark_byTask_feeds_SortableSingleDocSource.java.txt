@@ -1,0 +1,13 @@
+diff --git a/lucene/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/SortableSingleDocSource.java b/lucene/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/SortableSingleDocSource.java
+index cb256c4e..7d5ff5b 100644
+--- a/lucene/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/SortableSingleDocSource.java
++++ b/lucene/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/SortableSingleDocSource.java
+@@ -239,7 +239,7 @@
+         "Cook Islands",
+         "Palau",
+         "Marshall Islands",
+-        "S�o Tom� and Pr�ncipe",
++        "São Tomé and Príncipe",
+         "Anguilla",
+         "Kiribati",
+         "Tuvalu",
